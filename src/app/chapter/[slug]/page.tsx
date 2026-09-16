@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
-import { Wrench } from "lucide-react";
+import Link from "next/link";
+import { Wrench, BookOpenCheck } from "lucide-react";
+import type { ResourceLink, TryItYourself, Callout as CalloutData } from "@/lib/chapters";
 import {
   chapters,
   getChapterBySlug,
@@ -9,6 +11,155 @@ import ConstellationNav from "@/components/ConstellationNav";
 import StakeholderBubbles from "@/components/StakeholderBubbles";
 import ContentRenderer from "@/components/ContentRenderer";
 import PageNav from "@/components/PageNav";
+import Callout from "@/components/Callout";
+
+function InlineMarkdown({ text }: { text: string }) {
+  const parts: React.ReactNode[] = [];
+  let remaining = text;
+  let idx = 0;
+
+  while (remaining.length > 0) {
+    const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
+    const codeMatch = remaining.match(/`(.+?)`/);
+    const linkMatch = remaining.match(/\[([^\]]+)\]\(([^)]+)\)/);
+
+    type MatchType = { match: RegExpMatchArray; type: "bold" | "code" | "link" };
+    let firstMatch: MatchType | null = null;
+
+    const candidates: (MatchType | null)[] = [
+      boldMatch ? { match: boldMatch, type: "bold" as const } : null,
+      codeMatch ? { match: codeMatch, type: "code" as const } : null,
+      linkMatch ? { match: linkMatch, type: "link" as const } : null,
+    ];
+
+    for (const candidate of candidates) {
+      if (
+        candidate &&
+        candidate.match.index !== undefined &&
+        (!firstMatch || candidate.match.index < firstMatch.match.index!)
+      ) {
+        firstMatch = candidate;
+      }
+    }
+
+    if (!firstMatch) {
+      parts.push(remaining);
+      break;
+    }
+
+    const before = remaining.slice(0, firstMatch.match.index!);
+    if (before) parts.push(before);
+
+    if (firstMatch.type === "bold") {
+      parts.push(
+        <strong key={idx} className="font-semibold text-foreground">
+          {firstMatch.match[1]}
+        </strong>
+      );
+    } else if (firstMatch.type === "code") {
+      parts.push(
+        <code
+          key={idx}
+          className="rounded-md bg-accent-surface px-1.5 py-0.5 text-sm font-mono text-accent-text"
+        >
+          {firstMatch.match[1]}
+        </code>
+      );
+    } else {
+      parts.push(
+        <Link
+          key={idx}
+          href={firstMatch.match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-accent underline underline-offset-2 hover:text-accent-light"
+        >
+          {firstMatch.match[1]}
+        </Link>
+      );
+    }
+
+    remaining = remaining.slice(
+      firstMatch.match.index! + firstMatch.match[0].length
+    );
+    idx++;
+  }
+
+  return <>{parts}</>;
+}
+
+function TryItYourselfBlock({ exercise }: { exercise: TryItYourself }) {
+  return (
+    <div className="relative mt-14">
+      <div className="rounded-2xl border border-accent/20 bg-accent-surface p-6">
+        <div className="flex items-center gap-2 mb-3">
+          <Wrench className="h-5 w-5 text-accent" />
+          <h3 className="font-semibold text-accent-text">Try It Yourself</h3>
+        </div>
+        <p className="text-sm leading-relaxed text-muted mb-4">
+          <InlineMarkdown text={exercise.intro} />
+        </p>
+        <ol className="mb-5 ml-5 list-decimal space-y-2 text-sm text-muted">
+          {exercise.steps.map((step, i) => (
+            <li key={i}>
+              <InlineMarkdown text={step} />
+            </li>
+          ))}
+        </ol>
+        {exercise.resources.length > 0 && (
+          <div className="rounded-xl border border-accent/10 bg-bg/60 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-accent-text mb-2">
+              Useful docs
+            </p>
+            <ul className="space-y-1.5">
+              {exercise.resources.map((resource: ResourceLink) => (
+                <li key={resource.url}>
+                  <Link
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-accent underline underline-offset-2 hover:text-accent-light"
+                  >
+                    {resource.label}
+                    <span className="text-xs opacity-60">↗</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+      {exercise.notes && exercise.notes.length > 0 && (
+        <>
+          <div className="mt-4 space-y-3 xl:hidden">
+            {exercise.notes.map((note: CalloutData, i: number) => (
+              <Callout
+                key={i}
+                type={note.type}
+                title={note.title}
+                marker={i + 1}
+              >
+                {note.content}
+              </Callout>
+            ))}
+          </div>
+          <div className="absolute left-full top-0 ml-6 w-60 space-y-3 hidden xl:block">
+            {exercise.notes.map((note: CalloutData, i: number) => (
+              <Callout
+                key={i}
+                type={note.type}
+                title={note.title}
+                marker={i + 1}
+              >
+                {note.content}
+              </Callout>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export function generateStaticParams() {
   return chapters.map((ch) => ({ slug: ch.slug }));
@@ -67,17 +218,20 @@ export default async function ChapterPage(props: PageProps<"/chapter/[slug]">) {
           </article>
 
           {/* Try it yourself */}
-          {chapter.tryItYourself && (
-            <div className="mt-14 rounded-2xl border border-accent/20 bg-accent-surface p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Wrench className="h-5 w-5 text-accent" />
-                <h3 className="font-semibold text-accent-text">
-                  Try It Yourself
+          {chapter.tryItYourself && <TryItYourselfBlock exercise={chapter.tryItYourself} />}
+
+          {/* Bookify example */}
+          {chapter.bookifyExample && (
+            <div className="mt-14 rounded-2xl border border-border bg-surface p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <BookOpenCheck className="h-5 w-5 text-accent" />
+                <h3 className="font-semibold text-foreground">
+                  Bookify Example
                 </h3>
               </div>
-              <p className="text-sm leading-relaxed text-muted">
-                {chapter.tryItYourself}
-              </p>
+              <div className="text-sm text-muted leading-relaxed">
+                <ContentRenderer blocks={chapter.bookifyExample} />
+              </div>
             </div>
           )}
         </div>
