@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { chapters } from "@/lib/chapters";
 import ConstellationNav from "@/components/ConstellationNav";
+import HeroBackground from "@/components/HeroBackground";
 import {
   ArrowRight,
   Layers,
@@ -45,90 +46,102 @@ export default function Home() {
       <ConstellationNav />
 
       {/* Hero */}
-      <section className="mx-auto w-full max-w-[73rem] px-6 pt-20 pb-16">
-        <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-12">
-          {/* Left: text */}
-          <div className="flex-1">
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent-surface px-3 py-1 text-xs font-medium text-accent-text mb-5">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
-              14 chapters &middot; Full production guide
-            </div>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl leading-[1.1]">
-              How to Build a{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                Modern Product
-              </span>
-            </h1>
-            <p className="mt-5 text-lg text-muted leading-relaxed max-w-lg">
-              Learn the entire software development lifecycle by building{" "}
-              <strong className="text-foreground font-semibold">Bookify</strong>{" "}
-              — a real ebook store with payments, email delivery, containers,
-              CI/CD, and production observability.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/chapter/before-code"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:shadow-lg hover:brightness-110"
-              >
-                Start Learning
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-              <a
-                href="#chapters"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2.5 text-sm font-medium text-muted transition-all hover:border-border-hover hover:text-foreground hover:bg-surface"
-              >
-                Browse Chapters
-              </a>
-            </div>
-          </div>
-
-          {/* Right: feature pills */}
-          <div className="flex flex-col gap-3 md:w-72">
-            {[
-              {
-                icon: Layers,
-                title: "Full Stack",
-                desc: "Every layer, from database to deploy.",
-                color: "#2563eb",
-              },
-              {
-                icon: Shield,
-                title: "Production Grade",
-                desc: "Security, observability, edge cases.",
-                color: "#06b6d4",
-              },
-              {
-                icon: Rocket,
-                title: "Ship It",
-                desc: "Real payments, email, live deploy.",
-                color: "#f59e0b",
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="flex items-start gap-3 rounded-2xl border border-border bg-surface p-4 transition-all hover:shadow-md hover:border-border-hover"
-              >
-                <span
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
-                  style={{ backgroundColor: `${card.color}15` }}
-                >
-                  <card.icon
-                    className="h-4.5 w-4.5"
-                    style={{ color: card.color }}
-                  />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">
-                    {card.title}
-                  </p>
-                  <p className="text-xs text-muted leading-relaxed mt-0.5">
-                    {card.desc}
-                  </p>
-                </div>
+      <section className="relative -mt-16 flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-16 text-white">
+        <HeroBackground />
+        <div className="relative z-10 mx-auto w-full max-w-[73rem]">
+          <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center lg:justify-between">
+            {/* Left: text */}
+            <div className="flex-1 max-w-2xl">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-blue-100 backdrop-blur-sm mb-5">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                14 chapters &middot; Full production guide
               </div>
-            ))}
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl leading-[1.1]">
+                How to Build a{" "}
+                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  Modern Product
+                </span>
+              </h1>
+              <p className="mt-6 text-lg text-blue-100/80 leading-relaxed max-w-xl">
+                Learn the entire software development lifecycle by building{" "}
+                <strong className="text-white font-semibold">Bookify</strong>{" "}
+                — a real ebook store with payments, email delivery, containers,
+                CI/CD, and production observability.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/chapter/before-code"
+                  className="group inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-400/20 transition-all hover:shadow-cyan-400/40 hover:brightness-110"
+                >
+                  Start Learning
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+                <a
+                  href="#chapters"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-white/40 hover:bg-white/10"
+                >
+                  Browse Chapters
+                </a>
+              </div>
+            </div>
+
+            {/* Right: feature pills */}
+            <div className="flex flex-col gap-3 lg:w-80">
+              {[
+                {
+                  icon: Layers,
+                  title: "Full Stack",
+                  desc: "Every layer, from database to deploy.",
+                  color: "#22d3ee",
+                },
+                {
+                  icon: Shield,
+                  title: "Production Grade",
+                  desc: "Security, observability, edge cases.",
+                  color: "#60a5fa",
+                },
+                {
+                  icon: Rocket,
+                  title: "Ship It",
+                  desc: "Real payments, email, live deploy.",
+                  color: "#f59e0b",
+                },
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/10"
+                >
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+                    style={{ backgroundColor: `${card.color}20` }}
+                  >
+                    <card.icon
+                      className="h-4.5 w-4.5"
+                      style={{ color: card.color }}
+                    />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-white">
+                      {card.title}
+                    </p>
+                    <p className="text-xs text-blue-100/70 leading-relaxed mt-0.5">
+                      {card.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <a
+          href="#chapters"
+          className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-xs font-medium text-blue-200/70 transition-colors hover:text-white"
+        >
+          Scroll to explore
+          <ArrowRight className="h-4 w-4 rotate-90 animate-bounce" />
+        </a>
       </section>
 
       {/* Full-width hero mockup */}
@@ -194,6 +207,7 @@ export default function Home() {
         id="chapters"
         className="mx-auto w-full max-w-[73rem] px-6 pb-20"
       >
+        <br/>
         <h2 className="text-2xl font-bold text-foreground mb-2">
           All Chapters
         </h2>

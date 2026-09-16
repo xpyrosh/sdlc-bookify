@@ -44,10 +44,8 @@ export default function ConstellationNav({ currentSlug }: Props) {
 
   return (
     <header
-      className={`sticky top-0 z-30 flex items-center gap-4 border-b px-4 py-3 md:px-6 shadow-lg ${
-        isDark
-          ? "border-white/10 shadow-blue-900/20"
-          : "border-white/20 shadow-blue-500/15"
+      className={`sticky top-0 z-30 flex items-center gap-4 border-b border-transparent px-4 py-3 md:px-6 shadow-lg ${
+        isDark ? "shadow-blue-900/20" : "shadow-blue-500/15"
       }`}
     >
       {/* Frosted blur layer */}
