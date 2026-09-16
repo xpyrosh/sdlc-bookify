@@ -90,6 +90,7 @@ export default function ConstellationNav({ currentSlug }: Props) {
             const isVisited = currentIdx >= 0 && i < currentIdx;
             const gradient = pillGradients[i] ?? "from-blue-500 to-cyan-500";
             const active = isCurrent || isVisited;
+            const expanded = hoveredIdx === i || isCurrent;
 
             return (
               <li key={ch.slug} className="relative list-none">
@@ -107,7 +108,7 @@ export default function ConstellationNav({ currentSlug }: Props) {
                             : "bg-surface text-muted hover:text-white"
                       }
                     `}
-                    style={{ width: hoveredIdx === i ? "140px" : "36px" }}
+                    style={{ width: expanded ? "140px" : "36px" }}
                     onMouseEnter={() => setHoveredIdx(i)}
                     onMouseLeave={() => setHoveredIdx(null)}
                   >
@@ -116,7 +117,7 @@ export default function ConstellationNav({ currentSlug }: Props) {
                       className={`
                         absolute inset-0 bg-gradient-to-r ${gradient}
                         opacity-0 transition-opacity duration-500
-                        ${hoveredIdx === i || active ? "opacity-100" : ""}
+                        ${expanded || active ? "opacity-100" : ""}
                       `}
                     />
 
@@ -125,7 +126,7 @@ export default function ConstellationNav({ currentSlug }: Props) {
                       className={`
                         absolute inset-0 -z-10 translate-y-1 rounded-full bg-gradient-to-r ${gradient}
                         opacity-0 blur-lg transition-opacity duration-500
-                        ${hoveredIdx === i ? "opacity-60" : ""}
+                        ${expanded ? "opacity-60" : ""}
                       `}
                     />
 
@@ -135,7 +136,7 @@ export default function ConstellationNav({ currentSlug }: Props) {
                         absolute z-10 flex h-9 w-9 items-center justify-center
                         text-xs font-bold transition-all duration-300
                         ${
-                          hoveredIdx === i
+                          expanded
                             ? "scale-0 opacity-0"
                             : "scale-100 opacity-100"
                         }
@@ -150,7 +151,7 @@ export default function ConstellationNav({ currentSlug }: Props) {
                         z-10 whitespace-nowrap px-3 text-xs font-semibold uppercase tracking-wider
                         transition-all duration-300
                         ${
-                          hoveredIdx === i
+                          expanded
                             ? "scale-100 opacity-100 delay-100"
                             : "scale-0 opacity-0"
                         }
