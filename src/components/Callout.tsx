@@ -17,30 +17,22 @@ interface Props {
 const config = {
   "edge-case": {
     icon: AlertOctagon,
-    bg: "var(--callout-edge-bg)",
-    border: "var(--callout-edge-border)",
-    text: "var(--callout-edge-text)",
+    color: "var(--callout-edge-border)",
     label: "Edge Case",
   },
   warning: {
     icon: AlertTriangle,
-    bg: "var(--callout-warn-bg)",
-    border: "var(--callout-warn-border)",
-    text: "var(--callout-warn-text)",
+    color: "var(--callout-warn-border)",
     label: "Warning",
   },
   tip: {
     icon: Lightbulb,
-    bg: "var(--callout-tip-bg)",
-    border: "var(--callout-tip-border)",
-    text: "var(--callout-tip-text)",
+    color: "var(--callout-tip-border)",
     label: "Tip",
   },
   note: {
     icon: Info,
-    bg: "var(--callout-note-bg)",
-    border: "var(--callout-note-border)",
-    text: "var(--callout-note-text)",
+    color: "var(--callout-note-border)",
     label: "Note",
   },
 };
@@ -48,33 +40,33 @@ const config = {
 export default function Callout({ type, title, children, marker }: Props) {
   const c = config[type];
   const Icon = c.icon;
+  const rotate =
+    (marker ?? 0) % 2 === 0 ? "sidenote-rotate-left" : "sidenote-rotate-right";
 
   return (
-    <aside
-      className="rounded-xl border-l-2 p-3 text-xs shadow-sm transition-shadow hover:shadow-md"
-      style={{
-        backgroundColor: c.bg,
-        borderColor: c.border,
-      }}
-    >
-      <div className="flex items-center gap-1.5 mb-1">
-        <Icon className="h-3 w-3 shrink-0" style={{ color: c.border }} />
+    <aside className={`sidenote-card ${rotate}`}>
+      <div className="absolute right-2 top-1.5 flex flex-col items-end gap-0">
+        <Icon className="h-2.5 w-2.5" style={{ color: c.color }} />
         <span
-          className="font-bold uppercase tracking-wider"
-          style={{ color: c.border }}
+          className="text-[9px] font-bold uppercase tracking-wider leading-none"
+          style={{ color: c.color }}
         >
           {c.label}
         </span>
-        {marker && (
-          <span className="ml-auto font-mono opacity-40 text-[10px]">
-            {marker}
-          </span>
-        )}
       </div>
-      <p className="font-semibold mb-0.5 leading-snug" style={{ color: c.text }}>
-        {title}
-      </p>
-      <div className="leading-snug text-muted">{children}</div>
+
+      <div className="space-y-0 text-[11px] leading-[1.35rem]">
+        <p className="font-semibold" style={{ color: "var(--sidenote-text)" }}>
+          {title}
+        </p>
+        <div className="opacity-80">{children}</div>
+      </div>
+
+      {marker && (
+        <span className="absolute bottom-1 right-2 font-mono text-[8px] opacity-40">
+          {marker}
+        </span>
+      )}
     </aside>
   );
 }

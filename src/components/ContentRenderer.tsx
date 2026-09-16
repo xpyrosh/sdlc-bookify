@@ -270,7 +270,7 @@ export default function ContentRenderer({ blocks }: Props) {
 
             {/* Right gutter sidenotes on large screens */}
             {group.callouts.length > 0 && (
-              <div className="hidden xl:flex xl:absolute xl:left-full xl:top-0 xl:ml-6 xl:w-56 xl:flex-col xl:gap-3">
+              <div className="hidden xl:flex xl:absolute xl:left-full xl:top-0 xl:ml-6 xl:w-60 xl:flex-col xl:gap-5">
                 {group.callouts.map((c) => {
                   const m = marker++;
                   return <CalloutNode key={m} block={c} marker={m} />;

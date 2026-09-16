@@ -36,8 +36,8 @@ export default async function ChapterPage(props: PageProps<"/chapter/[slug]">) {
       <ConstellationNav currentSlug={slug} />
 
       {/* Content + sidenotes section — centered with equal outer margins.
-         56rem content + 1.5rem gap + 14rem sidenotes = 71.5rem total. */}
-      <section className="mx-auto w-full max-w-[71.5rem] px-4 py-10 pb-16 sm:px-6 xl:px-8">
+         56rem content + 1.5rem gap + 15rem sidenotes = 72.5rem total. */}
+      <section className="mx-auto w-full max-w-[73rem] px-4 py-10 pb-16 sm:px-6 xl:px-8">
         <div className="relative max-w-4xl">
           {/* Chapter header */}
           <div className="mb-10">

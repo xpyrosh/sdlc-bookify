@@ -90,6 +90,65 @@
   --color-code-bg: var(--code-bg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-sidenote: var(--font-special-elite), "Courier New", monospace;
+}
+
+/* Sidenote / notebook-paper card */
+.sidenote-card {
+  --row-size: 1.1rem;
+  position: relative;
+  background-color: var(--sidenote-bg, #f1efeb);
+  color: var(--sidenote-text, #2a2a2a);
+  font-family: var(--font-sidenote);
+  padding: 0.95rem 0.85rem 0.5rem 1.6rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.08));
+
+  /* punched holes on the left */
+  -webkit-mask:
+    linear-gradient(#000, #000) no-repeat center / 100% 100%,
+    radial-gradient(circle, #000 42%, transparent 0) repeat-y 8px 5px / 11px var(--row-size);
+  -webkit-mask-composite: source-out;
+  mask:
+    linear-gradient(#000, #000) no-repeat center / 100% 100%,
+    radial-gradient(circle, #000 42%, transparent 0) repeat-y 8px 5px / 11px var(--row-size);
+  mask-composite: subtract;
+}
+
+.sidenote-card::before {
+  content: '';
+  position: absolute;
+  inset: 0.75rem 0 0.4rem 0;
+  height: auto;
+  background-image: repeating-linear-gradient(
+    transparent 0 calc(var(--row-size) - 1px),
+    var(--sidenote-line, rgba(0, 0, 0, 0.08)) 0 var(--row-size)
+  );
+  background-size: 88% calc(var(--row-size) * 12);
+  background-position: 60% 0;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sidenote-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sidenote-card:hover {
+  rotate: 0deg !important;
+  translate: 0 -4px;
+  filter: drop-shadow(3px 4px 12px rgba(0, 0, 0, 0.12));
+}
+
+.sidenote-rotate-left { rotate: -1.5deg; }
+.sidenote-rotate-right { rotate: 1deg; }
+
+[data-theme="dark"] .sidenote-card {
+  --sidenote-bg: #1e1e24;
+  --sidenote-line: rgba(255, 255, 255, 0.08);
+  --sidenote-text: #e2e2e2;
 }
 
 body {
