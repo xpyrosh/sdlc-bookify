@@ -182,7 +182,7 @@ export default function Home() {
             <span className="text-xs font-medium">Bookify Tutorial</span>
           </div>
           <p className="text-xs text-muted">
-            From idea to production.
+            Shiva Ramsamooj &middot; 2026
           </p>
         </div>
       </footer>

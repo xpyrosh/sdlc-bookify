@@ -91,7 +91,7 @@ export default async function ChapterPage(props: PageProps<"/chapter/[slug]">) {
       {/* Footer */}
       <footer className="border-t border-border mt-auto">
         <div className="mx-auto max-w-4xl px-6 py-6 text-center text-xs text-muted">
-          Bookify Tutorial &middot; From Idea to Production
+          Bookify Tutorial &middot; From Idea to Production &middot; Shiva Ramsamooj 2026
         </div>
       </footer>
     </main>
