@@ -39,8 +39,15 @@ export interface TryItYourself {
   notes?: Callout[];
 }
 
+export interface Phase {
+  id: string;
+  label: string;
+  color: string;
+}
+
 export interface Chapter {
   slug: string;
+  phaseId: string;
   number: number;
   title: string;
   subtitle: string;
@@ -51,9 +58,20 @@ export interface Chapter {
   bookifyExample?: ContentBlock[];
 }
 
+export const phases: Phase[] = [
+  { id: "discover", label: "Discover", color: "#3b82f6" },
+  { id: "design", label: "Design", color: "#06b6d4" },
+  { id: "build", label: "Build", color: "#10b981" },
+  { id: "integrate", label: "Integrate", color: "#f59e0b" },
+  { id: "secure", label: "Secure", color: "#f43f5e" },
+  { id: "deploy", label: "Deploy", color: "#8b5cf6" },
+  { id: "operate", label: "Operate", color: "#ec4899" },
+];
+
 export const chapters: Chapter[] = [
   {
     slug: "before-code",
+    phaseId: "discover",
     number: 0,
     title: "Before Code",
     subtitle: "Product Definition & Validation",
@@ -367,11 +385,128 @@ export const chapters: Chapter[] = [
         content:
           "- Which object-storage provider gives the lowest egress cost at launch volume?\n- Will the author handle support email directly or forward to a shared inbox?\n- Do we need a separate staging environment, or can we rely on Stripe test mode?",
       },
+    ],  },
+  {
+    slug: "market-research",
+    phaseId: "discover",
+    number: 1,
+    title: "Market Research",
+    subtitle: "Validate Demand & Understand the Market",
+    description:
+      "Talk to potential readers, analyze competitors, and confirm there is real demand before building.",
+    stakeholders: [
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Owns research, requirements, and scope decisions.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Assesses feasibility and estimates effort.",
+      },
+      {
+        role: "Founder",
+        abbr: "FO",
+        color: "#f59e0b",
+        responsibility:
+          "Approves scope and business trade-offs.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+      },
+    ],
+  },
+  {
+    slug: "requirements-scope",
+    phaseId: "discover",
+    number: 2,
+    title: "Requirements & Scope",
+    subtitle: "Define What Bookify Must Do",
+    description:
+      "Turn research into concrete requirements, user stories, and an MVP scope the whole team agrees on.",
+    stakeholders: [
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Owns research, requirements, and scope decisions.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Assesses feasibility and estimates effort.",
+      },
+      {
+        role: "Founder",
+        abbr: "FO",
+        color: "#f59e0b",
+        responsibility:
+          "Approves scope and business trade-offs.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+      },
+    ],
+  },
+  {
+    slug: "ux-ui-design",
+    phaseId: "design",
+    number: 3,
+    title: "UX / UI Design",
+    subtitle: "Design the User Experience",
+    description:
+      "Create user flows, wireframes, and a mobile-first design before writing frontend code.",
+    stakeholders: [
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Owns research, requirements, and scope decisions.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Assesses feasibility and estimates effort.",
+      },
+      {
+        role: "Founder",
+        abbr: "FO",
+        color: "#f59e0b",
+        responsibility:
+          "Approves scope and business trade-offs.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+      },
     ],
   },
   {
     slug: "architecture",
-    number: 1,
+    phaseId: "design",
+    number: 4,
     title: "Architecture",
     subtitle: "Tech Stack & Decisions",
     description:
@@ -657,11 +792,11 @@ export const chapters: Chapter[] = [
 └── package.json`,
         },
       },
-    ],
-  },
+    ],  },
   {
-    slug: "database",
-    number: 2,
+    slug: "database-design",
+    phaseId: "design",
+    number: 5,
     title: "Database",
     subtitle: "Schema Design & Data Integrity",
     description:
@@ -966,11 +1101,11 @@ enum OrderStatus {
             "The enum prevents invalid statuses like 'complated' from ever reaching the database. It also makes Prisma-generated types safer in the backend.",
         },
       },
-    ],
-  },
+    ],  },
   {
-    slug: "backend",
-    number: 3,
+    slug: "backend-api",
+    phaseId: "build",
+    number: 6,
     title: "Backend & API",
     subtitle: "Business Logic & Webhooks",
     description:
@@ -1274,11 +1409,11 @@ export async function createCheckoutSession(req: Request) {
             "For a catalog with many products, create Stripe Price objects once and store their IDs. For one ebook, inline price_data is simpler.",
         },
       },
-    ],
-  },
+    ],  },
   {
     slug: "frontend",
-    number: 4,
+    phaseId: "build",
+    number: 7,
     title: "Frontend",
     subtitle: "Purchase Experience & UI",
     description:
@@ -1508,11 +1643,11 @@ export function BuyButton({ priceId }: { priceId: string }) {
             "Only the publishable key can be exposed to the browser. NEXT_PUBLIC_ tells Next.js to include it in client-side JavaScript. Never prefix a secret key with NEXT_PUBLIC_.",
         },
       },
-    ],
-  },
+    ],  },
   {
     slug: "containers",
-    number: 5,
+    phaseId: "build",
+    number: 8,
     title: "Containers",
     subtitle: "Docker & Environment Parity",
     description:
@@ -1776,11 +1911,50 @@ volumes:
   db_data:`,
         },
       },
+    ],  },
+  {
+    slug: "ai-integration",
+    phaseId: "build",
+    number: 9,
+    title: "AI Integration",
+    subtitle: "Add an AI-Powered Feature to Bookify",
+    description:
+      "Integrate an AI model to power a book recommendation assistant or AI-generated summaries.",
+    stakeholders: [
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Owns research, requirements, and scope decisions.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Assesses feasibility and estimates effort.",
+      },
+      {
+        role: "Founder",
+        abbr: "FO",
+        color: "#f59e0b",
+        responsibility:
+          "Approves scope and business trade-offs.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+      },
     ],
   },
   {
     slug: "object-storage",
-    number: 6,
+    phaseId: "integrate",
+    number: 10,
     title: "Object Storage",
     subtitle: "File Delivery & Signed URLs",
     description:
@@ -1958,11 +2132,11 @@ export async function createSignedDownloadUrl(key: string) {
 }`,
         },
       },
-    ],
-  },
+    ],  },
   {
-    slug: "email",
-    number: 7,
+    slug: "email-delivery",
+    phaseId: "integrate",
+    number: 11,
     title: "Email Delivery",
     subtitle: "Transactional Email & Reliability",
     description:
@@ -2141,11 +2315,11 @@ Value: v=DMARC1; p=quarantine; rua=mailto:dmarc@bookify.example.com; pct=100`,
             "The DKIM public key comes from your email provider. The DMARC report address should be a real mailbox you monitor.",
         },
       },
-    ],
-  },
+    ],  },
   {
     slug: "cicd",
-    number: 8,
+    phaseId: "integrate",
+    number: 12,
     title: "CI/CD",
     subtitle: "Automated Testing & Deployment",
     description:
@@ -2376,366 +2550,11 @@ jobs:
           RAILWAY_TOKEN: \${{ secrets.RAILWAY_TOKEN }}`,
         },
       },
-    ],
-  },
-  {
-    slug: "infrastructure",
-    number: 9,
-    title: "Infrastructure",
-    subtitle: "Hosting, DNS & Scaling",
-    description:
-      "Run Bookify in production with the right hosting, DNS, SSL, and scaling strategy.",
-    stakeholders: [
-      {
-        role: "DevOps / Platform",
-        abbr: "DO",
-        color: "#0ea5e9",
-        responsibility:
-          "Provisions and manages infrastructure, networking, SSL, scaling. Owns uptime and cost.",
-      },
-      {
-        role: "Engineering Lead",
-        abbr: "EL",
-        color: "#06b6d4",
-        responsibility:
-          "Architecture decisions, vendor selection, disaster recovery. Owns reliability strategy.",
-      },
-      {
-        role: "Founder / CTO",
-        abbr: "CT",
-        color: "#f59e0b",
-        responsibility:
-          "Approves hosting budget and acceptable downtime. Owns business risk.",
-      },
-    ],
-    content: [
-      {
-        type: "text",
-        content:
-          "You now need a live environment that users can reach. The right choice depends on your team size, traffic patterns, and budget. For Bookify, we are optimizing for shipping speed, not maximum scale. A PaaS beats self-managed Kubernetes when the team is small.",
-      },
-      {
-        type: "heading",
-        level: 2,
-        content: "Environment Strategy",
-      },
-      {
-        type: "text",
-        content:
-          "Bookify uses three environments:\n\n- **Local:** Docker Compose with Postgres, API, and Mailpit. Developers run everything on their machine.\n- **Staging:** Deployed from the `main` branch. Uses real third-party services in **test mode** (Stripe test keys, Resend test domain). This is where final smoke tests happen.\n- **Production:** Deployed from a tagged release or a `release` branch. Uses live keys and a real sending domain. No test data.\n\nKeep environment configuration in environment variables, never in code. The same Docker image runs in staging and production; only the env vars change.",
-      },
-      {
-        type: "heading",
-        level: 2,
-        content: "Deployment Options",
-      },
-      {
-        type: "table",
-        tableHeaders: ["Approach", "Best For", "Example"],
-        tableRows: [
-          [
-            "PaaS",
-            "Fastest setup, small team",
-            "Render, Railway, Fly.io",
-          ],
-          [
-            "Serverless",
-            "Variable traffic, pay-per-use",
-            "Vercel + Lambda / Cloud Run",
-          ],
-          [
-            "Managed Containers",
-            "More control, multiple services",
-            "ECS, GKE, DigitalOcean",
-          ],
-          [
-            "Kubernetes",
-            "Many microservices, complex scaling",
-            "Not needed for Bookify",
-          ],
-        ],
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "tip",
-          title: "Start Simple",
-          content:
-            "You do not need Kubernetes to sell one ebook. Start with a PaaS (Railway or Fly), upgrade if you outgrow it.",
-        },
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "warning",
-          title: "HTTPS Is Mandatory",
-          content:
-            "Use managed certificates only (Let's Encrypt, Cloudflare, AWS ACM). Never ship an HTTP-only site. Browsers will warn users and search engines will penalize you.",
-        },
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "edge-case",
-          title: "Cost Guards",
-          content:
-            "Set billing alerts on every cloud service. A misconfigured S3 bucket or runaway Lambda can cost thousands before you notice.",
-        },
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "edge-case",
-          title: "Database Connection Limits",
-          content:
-            "If multiple app instances connect to one Postgres database, use a connection pooler (PgBouncer) to avoid exhausting connections.",
-        },
-      },
-    ],
-    tryItYourself: {
-      intro:
-        "Deploy the Bookify backend to a managed platform and verify HTTPS and environment variables work.",
-      steps: [
-        "Choose a platform (Railway, Fly.io, or Render) and create an account.",
-        "Connect your GitHub repository and select the `apps/api` folder as the deploy target.",
-        "Add environment variables for `DATABASE_URL`, `STRIPE_SECRET_KEY`, and `WEBHOOK_SECRET`.",
-        "Trigger a deploy and check the build logs for errors.",
-        "Visit the deployed `/health` endpoint in a browser.",
-        "Add a custom domain if available and confirm the browser shows a valid HTTPS padlock.",
-      ],
-      resources: [
-        {
-          label: "Railway — Deploy from GitHub",
-          url: "https://docs.railway.app/deploy/deploy-from-github",
-        },
-        {
-          label: "Fly.io — Hands-on with Fly",
-          url: "https://fly.io/docs/hands-on/",
-        },
-        {
-          label: "Render — Deploy a Node.js app",
-          url: "https://docs.render.com/deploy-node-express-app",
-        },
-      ],
-      notes: [
-        {
-          type: "tip",
-          title: "Staging should use real services in test mode",
-          content:
-            "Use Stripe test keys, a test email domain, and a separate storage bucket. The goal is production-like without production money.",
-        },
-        {
-          type: "warning",
-          title: "Do not share production secrets with staging",
-          content:
-            "If staging is compromised, you do not want live API keys exposed. Use scoped test keys whenever possible.",
-        },
-      ],
-    },
-    bookifyExample: [
-      {
-        type: "heading",
-        content: "Bookify Environment Variables",
-        level: 3,
-      },
-      {
-        type: "code",
-        code: {
-          language: "text",
-          filename: "apps/api/.env.example",
-          code: `DATABASE_URL=postgresql://bookify:bookify@localhost:5432/bookify_dev
-STRIPE_SECRET_KEY=sk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-STRIPE_PUBLISHABLE_KEY=pk_test_...
-RESEND_API_KEY=re_...
-S3_ENDPOINT=https://...
-S3_BUCKET=bookify-ebooks
-S3_ACCESS_KEY_ID=...
-S3_SECRET_ACCESS_KEY=...
-PORT=3000`,
-        },
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "warning",
-          title: "Commit the example, not the secrets",
-          content:
-            "Keep .env.example in git so new developers know what to set. Never commit the real .env file.",
-        },
-      },
-    ],
-  },
-  {
-    slug: "observability",
-    number: 10,
-    title: "Observability",
-    subtitle: "Logs, Metrics & Alerts",
-    description:
-      "Instrument Bookify so you can detect, debug, and fix problems quickly.",
-    stakeholders: [
-      {
-        role: "DevOps / SRE",
-        abbr: "SR",
-        color: "#0ea5e9",
-        responsibility:
-          "Log aggregation, dashboards, paging. Owns observability platform.",
-      },
-      {
-        role: "Backend Engineer",
-        abbr: "BE",
-        color: "#3b82f6",
-        responsibility:
-          "Emits structured logs and metrics from application code. Owns instrumentation.",
-      },
-      {
-        role: "Engineering Lead",
-        abbr: "EL",
-        color: "#06b6d4",
-        responsibility:
-          "Defines SLOs (e.g. 99.9% checkout success). Owns reliability targets.",
-      },
-      {
-        role: "Founder / PM",
-        abbr: "PM",
-        color: "#2563eb",
-        responsibility:
-          "Defines which metrics matter for the business. Owns business dashboards.",
-      },
-    ],
-    content: [
-      {
-        type: "text",
-        content:
-          'When a buyer says "I paid but didn\'t get my book," you need to reconstruct the exact transaction in seconds, not hours. Observability is not just collecting logs — it is designing your system so every important event is queryable and every failure is visible before a customer reports it.',
-      },
-      {
-        type: "heading",
-        level: 2,
-        content: "What to Alert On",
-      },
-      {
-        type: "text",
-        content:
-          "Avoid alerting on CPU or memory unless you have proven they cause user-facing failures. For Bookify, the most meaningful alerts are:\n\n- **Checkout success rate < 99% over 5 minutes.** This directly measures lost revenue.\n- **Webhook handler error rate > 1%.** Failed webhooks mean missing orders.\n- **Download success rate < 95%.** If buyers cannot download, support tickets spike.\n- **Email send failures > 5%.** No email means no download link.\n- **Database connection errors.** Usually an upstream outage or connection pool exhaustion.\n\nEach alert should have a runbook: where to look, what to try, and who to escalate to.",
-      },
-      {
-        type: "heading",
-        level: 2,
-        content: "The Three Pillars",
-      },
-      {
-        type: "table",
-        tableHeaders: ["Pillar", "Example for Bookify"],
-        tableRows: [
-          [
-            "Logs",
-            "\"Payment intent pi_123 succeeded for order abc\"",
-          ],
-          [
-            "Metrics",
-            "Checkout success rate, p95 latency, error rate",
-          ],
-          [
-            "Traces",
-            "Request from click → API → Stripe → email → response",
-          ],
-        ],
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "warning",
-          title: "Never Log PII",
-          content:
-            "Redact emails, IP addresses, and card tokens from logs. Log order_id and payment_intent_id — those are safe and useful for debugging.",
-        },
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "tip",
-          title: "Alert on Symptoms, Not Causes",
-          content:
-            "Page your on-call when checkout success rate drops below 99%, not when CPU usage is high. High CPU might not affect users; low success rate always does.",
-        },
-      },
-      {
-        type: "callout",
-        callout: {
-          type: "edge-case",
-          title: "On-Call Rotation",
-          content:
-            "Alerts without an on-call responder are useless. Define who responds and when, even if the team is small.",
-        },
-      },
-    ],
-    tryItYourself: {
-      intro:
-        "Add structured logging to the webhook handler so you can debug payments without guessing.",
-      steps: [
-        "Pick a logger (Pino is fast and JSON-first) and install it in `apps/api`.",
-        "In the Stripe webhook handler, log an object with `payment_intent_id`, `order_id`, and `event.type`.",
-        "Trigger a test payment and view the logs in your terminal or platform dashboard.",
-        "Search the logs for a specific `order_id` and confirm every step is recorded.",
-        "Add a log line for failures so unhandled webhook errors are visible.",
-      ],
-      resources: [
-        {
-          label: "Pino — Node.js logger",
-          url: "https://getpino.io/#/docs/getting-started",
-        },
-        {
-          label: "OpenTelemetry — Concepts",
-          url: "https://opentelemetry.io/docs/concepts/",
-        },
-        {
-          label: "Stripe — Best practices for webhooks",
-          url: "https://docs.stripe.com/webhooks/quickstart",
-        },
-      ],
-      notes: [
-        {
-          type: "tip",
-          title: "Use correlation IDs",
-          content:
-            "Add a request ID to every log line so you can trace one purchase from click to email.",
-        },
-        {
-          type: "warning",
-          title: "Never log PII",
-          content:
-            "Log order_id and payment_intent_id. Redact emails, IPs, and anything that could identify a person.",
-        },
-      ],
-    },
-    bookifyExample: [
-      {
-        type: "heading",
-        content: "Bookify Structured Log Example",
-        level: 3,
-      },
-      {
-        type: "code",
-        code: {
-          language: "json",
-          filename: "api logs",
-          code: `{
-  "level": "info",
-  "msg": "checkout.completed",
-  "order_id": "550e8400-e29b-41d4-a716-446655440000",
-  "payment_intent_id": "pi_3O...",
-  "event_type": "payment_intent.succeeded",
-  "duration_ms": 124,
-  "timestamp": "2026-01-14T09:23:11.004Z"
-}`,
-        },
-      },
-    ],
-  },
+    ],  },
   {
     slug: "security",
-    number: 11,
+    phaseId: "secure",
+    number: 13,
     title: "Security",
     subtitle: "Defense in Depth",
     description:
@@ -2922,11 +2741,11 @@ PORT=3000`,
 }`,
         },
       },
-    ],
-  },
+    ],  },
   {
     slug: "testing",
-    number: 12,
+    phaseId: "secure",
+    number: 14,
     title: "Testing",
     subtitle: "Confidence Through Verification",
     description:
@@ -3116,11 +2935,238 @@ describe("payment_intent.succeeded", () => {
 });`,
         },
       },
+    ],  },
+  {
+    slug: "compliance",
+    phaseId: "secure",
+    number: 15,
+    title: "Compliance & Legal",
+    subtitle: "Terms, Privacy, Tax, and Regulations",
+    description:
+      "Handle the legal and compliance obligations of selling digital products online.",
+    stakeholders: [
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Owns research, requirements, and scope decisions.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Assesses feasibility and estimates effort.",
+      },
+      {
+        role: "Founder",
+        abbr: "FO",
+        color: "#f59e0b",
+        responsibility:
+          "Approves scope and business trade-offs.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+      },
     ],
   },
   {
+    slug: "infrastructure",
+    phaseId: "deploy",
+    number: 16,
+    title: "Infrastructure",
+    subtitle: "Hosting, DNS & Scaling",
+    description:
+      "Run Bookify in production with the right hosting, DNS, SSL, and scaling strategy.",
+    stakeholders: [
+      {
+        role: "DevOps / Platform",
+        abbr: "DO",
+        color: "#0ea5e9",
+        responsibility:
+          "Provisions and manages infrastructure, networking, SSL, scaling. Owns uptime and cost.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Architecture decisions, vendor selection, disaster recovery. Owns reliability strategy.",
+      },
+      {
+        role: "Founder / CTO",
+        abbr: "CT",
+        color: "#f59e0b",
+        responsibility:
+          "Approves hosting budget and acceptable downtime. Owns business risk.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "You now need a live environment that users can reach. The right choice depends on your team size, traffic patterns, and budget. For Bookify, we are optimizing for shipping speed, not maximum scale. A PaaS beats self-managed Kubernetes when the team is small.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Environment Strategy",
+      },
+      {
+        type: "text",
+        content:
+          "Bookify uses three environments:\n\n- **Local:** Docker Compose with Postgres, API, and Mailpit. Developers run everything on their machine.\n- **Staging:** Deployed from the `main` branch. Uses real third-party services in **test mode** (Stripe test keys, Resend test domain). This is where final smoke tests happen.\n- **Production:** Deployed from a tagged release or a `release` branch. Uses live keys and a real sending domain. No test data.\n\nKeep environment configuration in environment variables, never in code. The same Docker image runs in staging and production; only the env vars change.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Deployment Options",
+      },
+      {
+        type: "table",
+        tableHeaders: ["Approach", "Best For", "Example"],
+        tableRows: [
+          [
+            "PaaS",
+            "Fastest setup, small team",
+            "Render, Railway, Fly.io",
+          ],
+          [
+            "Serverless",
+            "Variable traffic, pay-per-use",
+            "Vercel + Lambda / Cloud Run",
+          ],
+          [
+            "Managed Containers",
+            "More control, multiple services",
+            "ECS, GKE, DigitalOcean",
+          ],
+          [
+            "Kubernetes",
+            "Many microservices, complex scaling",
+            "Not needed for Bookify",
+          ],
+        ],
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Start Simple",
+          content:
+            "You do not need Kubernetes to sell one ebook. Start with a PaaS (Railway or Fly), upgrade if you outgrow it.",
+        },
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "HTTPS Is Mandatory",
+          content:
+            "Use managed certificates only (Let's Encrypt, Cloudflare, AWS ACM). Never ship an HTTP-only site. Browsers will warn users and search engines will penalize you.",
+        },
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "Cost Guards",
+          content:
+            "Set billing alerts on every cloud service. A misconfigured S3 bucket or runaway Lambda can cost thousands before you notice.",
+        },
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "Database Connection Limits",
+          content:
+            "If multiple app instances connect to one Postgres database, use a connection pooler (PgBouncer) to avoid exhausting connections.",
+        },
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Deploy the Bookify backend to a managed platform and verify HTTPS and environment variables work.",
+      steps: [
+        "Choose a platform (Railway, Fly.io, or Render) and create an account.",
+        "Connect your GitHub repository and select the `apps/api` folder as the deploy target.",
+        "Add environment variables for `DATABASE_URL`, `STRIPE_SECRET_KEY`, and `WEBHOOK_SECRET`.",
+        "Trigger a deploy and check the build logs for errors.",
+        "Visit the deployed `/health` endpoint in a browser.",
+        "Add a custom domain if available and confirm the browser shows a valid HTTPS padlock.",
+      ],
+      resources: [
+        {
+          label: "Railway — Deploy from GitHub",
+          url: "https://docs.railway.app/deploy/deploy-from-github",
+        },
+        {
+          label: "Fly.io — Hands-on with Fly",
+          url: "https://fly.io/docs/hands-on/",
+        },
+        {
+          label: "Render — Deploy a Node.js app",
+          url: "https://docs.render.com/deploy-node-express-app",
+        },
+      ],
+      notes: [
+        {
+          type: "tip",
+          title: "Staging should use real services in test mode",
+          content:
+            "Use Stripe test keys, a test email domain, and a separate storage bucket. The goal is production-like without production money.",
+        },
+        {
+          type: "warning",
+          title: "Do not share production secrets with staging",
+          content:
+            "If staging is compromised, you do not want live API keys exposed. Use scoped test keys whenever possible.",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify Environment Variables",
+        level: 3,
+      },
+      {
+        type: "code",
+        code: {
+          language: "text",
+          filename: "apps/api/.env.example",
+          code: `DATABASE_URL=postgresql://bookify:bookify@localhost:5432/bookify_dev
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+RESEND_API_KEY=re_...
+S3_ENDPOINT=https://...
+S3_BUCKET=bookify-ebooks
+S3_ACCESS_KEY_ID=...
+S3_SECRET_ACCESS_KEY=...
+PORT=3000`,
+        },
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "Commit the example, not the secrets",
+          content:
+            "Keep .env.example in git so new developers know what to set. Never commit the real .env file.",
+        },
+      },
+    ],  },
+  {
     slug: "launch",
-    number: 13,
+    phaseId: "deploy",
+    number: 17,
     title: "Launch Day",
     subtitle: "Go Live & Keep Improving",
     description:
@@ -3272,6 +3318,252 @@ describe("payment_intent.succeeded", () => {
       },
     ],
   },
+  {
+    slug: "observability",
+    phaseId: "operate",
+    number: 18,
+    title: "Observability",
+    subtitle: "Logs, Metrics & Alerts",
+    description:
+      "Instrument Bookify so you can detect, debug, and fix problems quickly.",
+    stakeholders: [
+      {
+        role: "DevOps / SRE",
+        abbr: "SR",
+        color: "#0ea5e9",
+        responsibility:
+          "Log aggregation, dashboards, paging. Owns observability platform.",
+      },
+      {
+        role: "Backend Engineer",
+        abbr: "BE",
+        color: "#3b82f6",
+        responsibility:
+          "Emits structured logs and metrics from application code. Owns instrumentation.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Defines SLOs (e.g. 99.9% checkout success). Owns reliability targets.",
+      },
+      {
+        role: "Founder / PM",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Defines which metrics matter for the business. Owns business dashboards.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          'When a buyer says "I paid but didn\'t get my book," you need to reconstruct the exact transaction in seconds, not hours. Observability is not just collecting logs — it is designing your system so every important event is queryable and every failure is visible before a customer reports it.',
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "What to Alert On",
+      },
+      {
+        type: "text",
+        content:
+          "Avoid alerting on CPU or memory unless you have proven they cause user-facing failures. For Bookify, the most meaningful alerts are:\n\n- **Checkout success rate < 99% over 5 minutes.** This directly measures lost revenue.\n- **Webhook handler error rate > 1%.** Failed webhooks mean missing orders.\n- **Download success rate < 95%.** If buyers cannot download, support tickets spike.\n- **Email send failures > 5%.** No email means no download link.\n- **Database connection errors.** Usually an upstream outage or connection pool exhaustion.\n\nEach alert should have a runbook: where to look, what to try, and who to escalate to.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "The Three Pillars",
+      },
+      {
+        type: "table",
+        tableHeaders: ["Pillar", "Example for Bookify"],
+        tableRows: [
+          [
+            "Logs",
+            "\"Payment intent pi_123 succeeded for order abc\"",
+          ],
+          [
+            "Metrics",
+            "Checkout success rate, p95 latency, error rate",
+          ],
+          [
+            "Traces",
+            "Request from click → API → Stripe → email → response",
+          ],
+        ],
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "Never Log PII",
+          content:
+            "Redact emails, IP addresses, and card tokens from logs. Log order_id and payment_intent_id — those are safe and useful for debugging.",
+        },
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Alert on Symptoms, Not Causes",
+          content:
+            "Page your on-call when checkout success rate drops below 99%, not when CPU usage is high. High CPU might not affect users; low success rate always does.",
+        },
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "On-Call Rotation",
+          content:
+            "Alerts without an on-call responder are useless. Define who responds and when, even if the team is small.",
+        },
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Add structured logging to the webhook handler so you can debug payments without guessing.",
+      steps: [
+        "Pick a logger (Pino is fast and JSON-first) and install it in `apps/api`.",
+        "In the Stripe webhook handler, log an object with `payment_intent_id`, `order_id`, and `event.type`.",
+        "Trigger a test payment and view the logs in your terminal or platform dashboard.",
+        "Search the logs for a specific `order_id` and confirm every step is recorded.",
+        "Add a log line for failures so unhandled webhook errors are visible.",
+      ],
+      resources: [
+        {
+          label: "Pino — Node.js logger",
+          url: "https://getpino.io/#/docs/getting-started",
+        },
+        {
+          label: "OpenTelemetry — Concepts",
+          url: "https://opentelemetry.io/docs/concepts/",
+        },
+        {
+          label: "Stripe — Best practices for webhooks",
+          url: "https://docs.stripe.com/webhooks/quickstart",
+        },
+      ],
+      notes: [
+        {
+          type: "tip",
+          title: "Use correlation IDs",
+          content:
+            "Add a request ID to every log line so you can trace one purchase from click to email.",
+        },
+        {
+          type: "warning",
+          title: "Never log PII",
+          content:
+            "Log order_id and payment_intent_id. Redact emails, IPs, and anything that could identify a person.",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify Structured Log Example",
+        level: 3,
+      },
+      {
+        type: "code",
+        code: {
+          language: "json",
+          filename: "api logs",
+          code: `{
+  "level": "info",
+  "msg": "checkout.completed",
+  "order_id": "550e8400-e29b-41d4-a716-446655440000",
+  "payment_intent_id": "pi_3O...",
+  "event_type": "payment_intent.succeeded",
+  "duration_ms": 124,
+  "timestamp": "2026-01-14T09:23:11.004Z"
+}`,
+        },
+      },
+    ],  },
+  {
+    slug: "maintenance",
+    phaseId: "operate",
+    number: 19,
+    title: "Maintenance & Iteration",
+    subtitle: "Keep Bookify Running After Launch",
+    description:
+      "Plan for updates, bug fixes, dependency upgrades, and ongoing feature improvement.",
+    stakeholders: [
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Owns research, requirements, and scope decisions.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Assesses feasibility and estimates effort.",
+      },
+      {
+        role: "Founder",
+        abbr: "FO",
+        color: "#f59e0b",
+        responsibility:
+          "Approves scope and business trade-offs.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+      },
+    ],
+  },
+  {
+    slug: "analytics",
+    phaseId: "operate",
+    number: 20,
+    title: "Analytics & Feedback",
+    subtitle: "Measure and Improve",
+    description:
+      "Track what matters, collect feedback, and use data to guide the next iteration of Bookify.",
+    stakeholders: [
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Owns research, requirements, and scope decisions.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Assesses feasibility and estimates effort.",
+      },
+      {
+        role: "Founder",
+        abbr: "FO",
+        color: "#f59e0b",
+        responsibility:
+          "Approves scope and business trade-offs.",
+      },
+    ],
+    content: [
+      {
+        type: "text",
+        content:
+          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+      },
+    ],
+  },
+
 ];
 
 export function getChapterBySlug(slug: string): Chapter | undefined {

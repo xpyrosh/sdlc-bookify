@@ -2,6 +2,7 @@ import Link from "next/link";
 import { chapters } from "@/lib/chapters";
 import ConstellationNav from "@/components/ConstellationNav";
 import HeroBackground from "@/components/HeroBackground";
+import LifecycleFlowchart from "@/components/LifecycleFlowchart";
 import {
   ArrowRight,
   Layers,
@@ -202,12 +203,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Lifecycle flowchart */}
+      <section className="mx-auto w-full max-w-[73rem] px-6 py-16">
+        <LifecycleFlowchart />
+      </section>
+
       {/* Chapter grid */}
       <section
         id="chapters"
         className="mx-auto w-full max-w-[73rem] px-6 pb-20"
       >
-        <br/>
         <h2 className="text-2xl font-bold text-foreground mb-2">
           All Chapters
         </h2>
