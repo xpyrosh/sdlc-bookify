@@ -268,9 +268,9 @@ export default function ContentRenderer({ blocks }: Props) {
             {/* Main content */}
             {hasMain && <ContentBlock block={group.main!} />}
 
-            {/* Right gutter sidenotes on large screens */}
-            {group.callouts.length > 0 && (
-              <div className="hidden xl:flex xl:absolute xl:left-full xl:top-0 xl:ml-6 xl:w-60 xl:flex-col xl:gap-5">
+            {/* Sidenotes: use gutter for 1-2 callouts, inline for 3+ to avoid clustering */}
+            {group.callouts.length > 0 && group.callouts.length <= 2 && (
+              <div className="hidden xl:flex xl:absolute xl:left-full xl:top-0 xl:ml-6 xl:w-60 xl:flex-col xl:gap-6">
                 {group.callouts.map((c) => {
                   const m = marker++;
                   return <CalloutNode key={m} block={c} marker={m} />;
@@ -278,9 +278,9 @@ export default function ContentRenderer({ blocks }: Props) {
               </div>
             )}
 
-            {/* Inline sidenotes for smaller screens */}
+            {/* Inline callouts when too many for the gutter, or on smaller screens */}
             {group.callouts.length > 0 && (
-              <div className="xl:hidden mt-3 space-y-3">
+              <div className={`mt-3 grid gap-4 ${group.callouts.length <= 2 ? "grid-cols-1 xl:hidden" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"}`}>
                 {group.callouts.map((c) => {
                   const m = marker++;
                   return <CalloutNode key={m} block={c} marker={m} />;

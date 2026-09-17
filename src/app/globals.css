@@ -73,6 +73,8 @@
   --shadow-card-hover: 0 2px 8px rgba(37,99,235,0.15), 0 8px 24px rgba(0,0,0,0.3);
 }
 
+/* Tailwind v4 theme mapping — valid @theme directive; editor CSS linters may warn. */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--bg-surface);
@@ -144,8 +146,8 @@
   filter: drop-shadow(3px 4px 12px rgba(0, 0, 0, 0.12));
 }
 
-.sidenote-rotate-left { rotate: -1.5deg; }
-.sidenote-rotate-right { rotate: 1deg; }
+.sidenote-rotate-left { rotate: -0.5deg; }
+.sidenote-rotate-right { rotate: 0.5deg; }
 
 [data-theme="dark"] .sidenote-card {
   --sidenote-bg: #1e1e24;

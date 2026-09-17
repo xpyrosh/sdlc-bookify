@@ -131,19 +131,21 @@ function TryItYourselfBlock({ exercise }: { exercise: TryItYourself }) {
       </div>
       {exercise.notes && exercise.notes.length > 0 && (
         <>
-          <div className="mt-4 space-y-3 xl:hidden">
-            {exercise.notes.map((note: CalloutData, i: number) => (
-              <Callout
-                key={i}
-                type={note.type}
-                title={note.title}
-                marker={i + 1}
-              >
-                {note.content}
-              </Callout>
-            ))}
-          </div>
-          <div className="absolute left-full top-0 ml-6 w-60 space-y-3 hidden xl:block">
+          {exercise.notes.length <= 2 && (
+            <div className="absolute left-full top-0 ml-6 w-60 space-y-5 hidden xl:block">
+              {exercise.notes.map((note: CalloutData, i: number) => (
+                <Callout
+                  key={i}
+                  type={note.type}
+                  title={note.title}
+                  marker={i + 1}
+                >
+                  {note.content}
+                </Callout>
+              ))}
+            </div>
+          )}
+          <div className={`mt-4 grid gap-4 ${exercise.notes.length <= 2 ? "grid-cols-1 xl:hidden" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"}`}>
             {exercise.notes.map((note: CalloutData, i: number) => (
               <Callout
                 key={i}
