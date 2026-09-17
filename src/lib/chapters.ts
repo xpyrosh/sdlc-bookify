@@ -421,7 +421,202 @@ export const chapters: Chapter[] = [
       {
         type: "text",
         content:
-          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+          "Market research is the work you do before you decide what to build. It is not a one-time report; it is a loop of forming hypotheses, talking to real people, and looking at what already exists in the market. The goal is not to prove your idea is good. The goal is to find out, as cheaply as possible, whether anyone cares enough to pay for it.",
+      },
+      {
+        type: "heading",
+        content: "What market research answers",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "You are trying to learn four things:\n\n1. **Who is the buyer?** Job title, income, habits, where they hang out online, what they already spend money on.\n2. **What problem do they have?** Describe it in their own words, not yours.\n3. **How do they solve it today?** Existing habits, competitors, workarounds, spreadsheets, manual processes.\n4. **What would make them switch?** Price, convenience, trust, a specific missing feature.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "Avoid confirmation bias",
+          content:
+            "Do not ask 'Would you use this?' People are polite. Ask about past behavior: 'When was the last time you bought an ebook? Tell me about that.' Past behavior predicts future behavior far better than opinions.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Finding people to talk to",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "You do not need hundreds of responses. Five to ten deep conversations usually beat a hundred survey clicks. Start with:\n\n- Your own network and communities the target buyer joins.\n- Social platforms where the topic is discussed (Reddit, LinkedIn, Discord, X).\n- A short screening form to filter for people who actually fit the profile.\n- A small incentive if needed: a $20 gift card, early access, or a free copy of the product.",
+      },
+      {
+        type: "heading",
+        content: "Interview structure that works",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "A good customer interview follows this arc:\n\n1. **Context:** What is your role? How do you currently read or buy books in this space?\n2. **Problem exploration:** What frustrates you about buying ebooks today? When did that last happen?\n3. **Current solutions:** What have you tried? What did you pay? Why did you stop?\n4. **Reaction to concept:** Describe the idea in one sentence, then ask for reactions. Do not pitch.\n5. **Pricing signals:** Have you ever paid for something similar? What was the last thing you bought in this category?\n6. **Close:** Would it be okay to follow up if we build a first version?",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Record and transcribe",
+          content:
+            "With permission, record the call and use a transcription tool. Direct quotes are far more convincing than memory when you later present findings to stakeholders.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Competitor analysis",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "List every way a buyer could already solve the problem. For each competitor, capture:\n\n- **Pricing and business model**\n- **Distribution channel** (marketplace, own site, app store)\n- **Strengths** you cannot easily match\n- **Weaknesses** or gaps that create an opening\n- **Target audience** (mass market vs niche)\n\nDo not copy features blindly. The goal is to find an underserved niche or a noticeably better experience.",
+      },
+      {
+        type: "heading",
+        content: "Pricing research without a finished product",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "You cannot reliably ask 'How much would you pay?' Instead, use three proxies:\n\n- **What they already pay** for comparable products or services.\n- **Van Westendorp pricing** questions: at what price is it too cheap, a bargain, starting to get expensive, too expensive.\n- **Pre-order or waitlist conversion** on a landing page with a real price shown.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "Sample size matters",
+          content:
+            "Two enthusiastic interviews feel like validation. They are not. Look for consistency across five or more interviews and triangulate with landing-page data or competitor revenue estimates before treating an insight as fact.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Synthesis and the go/no-go decision",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "After each interview, pull out one-page notes with: quotes, observed behaviors, and surprises. Cluster the notes into themes. You are looking for:\n\n- A repeated, specific problem\n- Evidence that people already spend money to solve it\n- A willingness to switch for a clearly better experience\n- A reachable audience you can afford to acquire\n\nIf those four signals are weak, change the idea, the audience, or the price before writing code.",
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Validate the demand side of Bookify before you design the product.",
+      steps: [
+        "Write a one-page research plan: hypothesis, buyer profile, and five open-ended questions.",
+        "Find five people who fit the profile and run 20-minute interviews.",
+        "Build a competitor comparison table with at least four alternatives.",
+        "Create a simple landing page that describes the ebook and its price, then share it in one relevant community.",
+        "Track email signups or pre-orders for one week and compare against your minimum-success threshold.",
+      ],
+      resources: [
+        { label: "The Mom Test", url: "https://www.momtestbook.com/" },
+        { label: "Jobs-to-be-Done Framework", url: "https://jtbd.info/" },
+        { label: "Typeform", url: "https://www.typeform.com/" },
+        { label: "Calendly", url: "https://calendly.com/" },
+      ],
+      notes: [
+        {
+          type: "note",
+          title: "Landing page tools",
+          content:
+            "Carrd, Notion with a form, or a simple Next.js page all work. The point is to measure intent, not to build a perfect site.",
+        },
+        {
+          type: "warning",
+          title: "Do not build the product first",
+          content:
+            "If your landing-page conversion is low, it is much cheaper to pivot the positioning than to rewrite the app.",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify Market Research Snapshot",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Bookify targets independent nonfiction authors who want to sell DRM-free ebooks directly to readers. The research goal: confirm that a meaningful group of readers prefers buying directly from an author over using Amazon or Gumroad.",
+      },
+      {
+        type: "heading",
+        content: "Hypothesis",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Readers who follow an author on social media are willing to buy a PDF/ePub directly from the author's website if checkout is fast, the file is DRM-free, and delivery is instant.",
+      },
+      {
+        type: "heading",
+        content: "Interview findings (made up)",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- 5 of 7 readers said they had bought a digital product from an individual creator in the last year.\n- 4 of 7 mentioned that long Amazon checkout flows on mobile were annoying for impulse buys.\n- 6 of 7 expected an immediate email with a download link after payment.\n- Only 2 of 7 cared about DRM; the rest wanted a file they could keep forever.\n- Price sensitivity: most expected a short ebook to cost $9–$19, similar to a Kindle title.",
+      },
+      {
+        type: "heading",
+        content: "Competitor matrix",
+        level: 3,
+      },
+      {
+        type: "table",
+        tableHeaders: ["Option", "Price cut", "Strength", "Weakness", "Best for"],
+        tableRows: [
+          ["Amazon KDP", "30–65%", "Huge reach, trust", "No direct customer data, slow payouts", "Mass market"],
+          ["Gumroad", "10% + fees", "Simple setup, checkout handled", "Generic store, limited file control", "General creators"],
+          ["Payhip", "5%", "Low fees, instant delivery", "Less discoverability", "Small audiences"],
+          ["WooCommerce", "$/month + plugins", "Full ownership", "Heavy setup, hosting burden", "WordPress sites"],
+          ["Bookify (ours)", "Stripe fees only", "Own brand, email list, custom flow", "Must build and operate it", "Author who wants control"],
+        ],
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "The opening",
+          content:
+            "The gap is clear: existing platforms either take a large revenue share or force the author into a generic storefront. Bookify can own the relationship and the margin.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Pricing hypothesis",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Launch price: $14 for a 120-page PDF/ePub bundle. No discounts for the first two weeks so we can measure true demand. If conversion on the landing page exceeds 5% at full price, we keep it. If not, we test $9 and compare.",
+      },
+      {
+        type: "heading",
+        content: "Go / no-go decision",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Go. Interviewees showed existing behavior, a clear delivery expectation, and price acceptance within range. The next step is to validate checkout conversion with a simple pre-order landing page before writing the backend.",
       },
     ],
   },
@@ -460,7 +655,192 @@ export const chapters: Chapter[] = [
       {
         type: "text",
         content:
-          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+          "Market research tells you what problem matters. Requirements define exactly what the product must do to solve it. This is where vague ideas become concrete, testable statements that designers and engineers can build against.",
+      },
+      {
+        type: "heading",
+        content: "Functional vs non-functional requirements",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "**Functional requirements** describe behavior. 'A reader can buy a book without creating an account.'\n\n**Non-functional requirements** describe quality. 'Checkout must complete in under 30 seconds on a 3G connection.' 'The system must be available for 99.9% of the month.'\n\nBoth matter. A product that does the right thing slowly or insecurely is not shippable.",
+      },
+      {
+        type: "heading",
+        content: "User stories and acceptance criteria",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "A user story captures who, what, and why:\n\n'As a [type of user], I want [goal], so that [reason].'\n\nAcceptance criteria turn the story into a contract. They are binary: the feature either passes or fails. Good criteria mention edge cases, not just the happy path. For example: 'Given a reader on mobile, when they click Buy, then Stripe Checkout opens within 2 seconds.'",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Use 'given/when/then'",
+          content:
+            "This format forces you to state the starting state, the action, and the expected result. It also makes edge cases obvious: what happens when the payment fails, the email bounces, or the file is too large.",
+        },
+      },
+      {
+        type: "heading",
+        content: "MoSCoW prioritization",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Not every requirement belongs in the first release. MoSCoW is a simple way to sort them:\n\n- **Must have** — the MVP is useless without it.\n- **Should have** — important, but the MVP can launch without it.\n- **Could have** — nice to have if time allows.\n- **Won't have** — explicitly out of scope for now.\n\nThe trick is to be honest about 'Must.' If the feature is not required for the first 100 sales, it is probably a 'Should' or 'Could.'",
+      },
+      {
+        type: "heading",
+        content: "The Product Requirements Document",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "A PRD is a single source of truth. It does not need to be a 30-page PDF. A one-page Notion or Markdown doc is often enough for an MVP. A useful PRD includes:\n\n1. Objective and success metrics\n2. Target audience and problem statement\n3. Functional requirements\n4. Non-functional requirements\n5. User stories with acceptance criteria\n6. In-scope and out-of-scope lists\n7. Open questions and assumptions\n8. Timeline or release milestones",
+      },
+      {
+        type: "heading",
+        content: "Scope and stakeholder alignment",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Scope creep is the default. The only defense is a written, agreed-upon scope that the whole team signs off on. When a new idea appears during development, ask: 'Is this in the PRD? Which MoSCoW bucket does it belong to? What do we remove to make room for it?'\n\nStakeholder sign-off does not mean the document is frozen forever. It means everyone understands the current plan before effort is spent.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "Assume constraints will change",
+          content:
+            "Write down your assumptions. 'We assume readers do not need accounts.' 'We assume tax is handled manually.' If an assumption changes, the requirement that depends on it may also need to change.",
+        },
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Turn Bookify research into a concrete requirements document.",
+      steps: [
+        "List 10 user stories for Bookify using the 'As a ... I want ... so that ...' format.",
+        "Add at least two acceptance criteria to each story in given/when/then form.",
+        "Classify every story as Must, Should, Could, or Won't have for the MVP.",
+        "Write a one-page PRD that includes objective, audience, scope, and open questions.",
+        "Share the PRD with one potential reader and one engineer for feedback.",
+      ],
+      resources: [
+        { label: "Atlassian User Stories", url: "https://www.atlassian.com/agile/project-management/user-stories" },
+        { label: "MoSCoW Prioritization", url: "https://www.productplan.com/glossary/moscow-prioritization/" },
+        { label: "Given/When/Then (BDD)", url: "https://cucumber.io/docs/bdd/" },
+      ],
+      notes: [
+        {
+          type: "note",
+          title: "Keep PRDs short",
+          content:
+            "The longer the document, the less likely it is read. Aim for one page plus appendices for complex flows or API specs.",
+        },
+        {
+          type: "warning",
+          title: "Beware solution language",
+          content:
+            "Requirements should describe the problem and outcome, not the implementation. Say 'reader receives a download link' not 'webhook writes to orders table.'",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify Requirements & Scope Document",
+        level: 3,
+      },
+      {
+        type: "heading",
+        content: "Objective",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Launch a direct-to-reader ebook storefront that lets the author sell a single DRM-free PDF/ePub bundle, deliver it by email, and track orders without a third-party marketplace.",
+      },
+      {
+        type: "heading",
+        content: "Target audience",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Primary: independent nonfiction authors with an existing audience. Secondary: readers who already follow the author and are comfortable buying from a creator's own site.",
+      },
+      {
+        type: "heading",
+        content: "Must-have user stories",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "**As a reader, I want to buy the book without creating an account.**\nAcceptance: guest checkout works on mobile and desktop; I receive a confirmation email within 60 seconds.\n\n**As a reader, I want a secure, expiring download link.**\nAcceptance: the link expires after 15 minutes or first use; repeated clicks show a clear 'link expired' message.\n\n**As an author, I want to see orders in a dashboard.**\nAcceptance: dashboard lists email, amount, status, and date; refunded orders are marked.\n\n**As an author, I want refunds to disable downloads.**\nAcceptance: after a refund, the order status changes and new signed URLs cannot be generated.",
+      },
+      {
+        type: "heading",
+        content: "Should-have stories",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- Discount codes at checkout.\n- PDF preview/sample chapter before purchase.\n- Basic revenue chart in admin dashboard.\n- Export orders to CSV.",
+      },
+      {
+        type: "heading",
+        content: "Could-have stories",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- AI-generated book recommendations based on reading history.\n- Affiliate tracking.\n- Subscription bundles for future books.",
+      },
+      {
+        type: "heading",
+        content: "Won't have in MVP",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- User accounts, login, or password management.\n- Multi-product catalog or shopping cart.\n- Automatic sales tax calculation for every jurisdiction.\n- Native mobile apps.",
+      },
+      {
+        type: "heading",
+        content: "Non-functional requirements",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- Checkout page loads in under 2 seconds on 4G.\n- Webhook processing succeeds 99.9% of the time.\n- Download links expire within 15 minutes.\n- Admin dashboard is protected by authentication.\n- All code is deployed through CI/CD with required status checks.",
+      },
+      {
+        type: "heading",
+        content: "Assumptions",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- The author handles international tax manually until revenue justifies automation.\n- The first book is a single PDF/ePub bundle; no multiple formats per title.\n- Customer support is handled directly by the author via email.",
       },
     ],
   },
@@ -474,32 +854,182 @@ export const chapters: Chapter[] = [
       "Create user flows, wireframes, and a mobile-first design before writing frontend code.",
     stakeholders: [
       {
+        role: "UX / UI Designer",
+        abbr: "UX",
+        color: "#06b6d4",
+        responsibility:
+          "Owns user flows, wireframes, visual design, and accessibility. Ensures the interface is usable before code is written.",
+      },
+      {
         role: "Product Manager",
         abbr: "PM",
         color: "#2563eb",
         responsibility:
-          "Owns research, requirements, and scope decisions.",
+          "Provides requirements and success metrics. Decides which features make the MVP cut.",
       },
       {
-        role: "Engineering Lead",
-        abbr: "EL",
-        color: "#06b6d4",
+        role: "Frontend Engineer",
+        abbr: "FE",
+        color: "#10b981",
         responsibility:
-          "Assesses feasibility and estimates effort.",
-      },
-      {
-        role: "Founder",
-        abbr: "FO",
-        color: "#f59e0b",
-        responsibility:
-          "Approves scope and business trade-offs.",
+          "Reviews designs for feasibility, performance, and responsive behavior. Flags components that need extra libraries or custom code.",
       },
     ],
     content: [
       {
         type: "text",
         content:
-          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+          "UX and UI design turn requirements into something a user can actually interact with. The goal is not to make pretty mockups. The goal is to remove friction, prevent errors, and make the product feel trustworthy before a single line of frontend code is written.",
+      },
+      {
+        type: "heading",
+        content: "Start with user flows, not pixels",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "A user flow is a map of every decision and screen a person passes through to complete a task. For Bookify, the core flow is: reader lands on site → reads about the book → clicks Buy → pays → receives email → clicks download link → gets the file.\n\nDraw the flow in low fidelity first. Use boxes for screens, diamonds for decisions, and arrows for transitions. This exposes missing screens and dead ends before you waste time polishing a layout.",
+      },
+      {
+        type: "heading",
+        content: "Wireframes: structure before style",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Wireframes are grayscale sketches of each screen. They answer: what is on the page, in what order, and how does the user move forward? Do not pick fonts or colors yet. Focus on hierarchy, labels, and button placement.\n\nFor a one-product store like Bookify, the key screens are usually:\n\n1. Landing page — cover, title, description, price, buy button, social proof.\n2. Checkout success page — confirmation and 'check your email' message.\n3. Download page — book title, download button, expiry timer.\n4. Admin dashboard — order list, status, refund action.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Design mobile first",
+          content:
+            "Most ebook purchases will happen on a phone or tablet. Start with the narrowest screen, then expand. If the flow works on mobile, it almost always works on desktop.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Design for states, not just the happy path",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Every screen has multiple states. If you only design the success case, engineers will have to invent the rest. Cover these at minimum:\n\n- **Empty state:** no orders in the admin dashboard yet.\n- **Loading state:** Stripe redirect is happening, download link is being validated.\n- **Error state:** payment failed, link expired, network error.\n- **Success state:** payment confirmed, file downloaded.\n- **Partial state:** user already bought but returns to the landing page.",
+      },
+      {
+        type: "heading",
+        content: "Accessibility from day one",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Accessibility is cheaper to build in than to retrofit. Follow the basics:\n\n- Use sufficient color contrast (WCAG AA: 4.5:1 for normal text).\n- Do not rely on color alone to communicate status. Add text or icons.\n- Use semantic HTML: proper headings, labels, button types.\n- Make every interactive element keyboard-focusable.\n- Add alt text to images and aria labels where the visual label is not enough.\n- Test with the keyboard and a screen reader at least once before launch.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "Do not design in isolation",
+          content:
+            "A designer who never talks to engineers ships impossible components. A designer who never talks to users ships beautiful features nobody wants. Review flows with both groups.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Prototypes and handoff",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "A clickable prototype lets you test the flow without building it. Tools like Figma let you link screens and record how test users get stuck.\n\nWhen the design is ready, hand off:\n\n- Final mockups for each screen and state.\n- A component inventory or design-system reference.\n- Spacing, color, and typography values (or a Tailwind config).\n- Notes on interactions: hover, focus, transitions, and error animations.\n- Accessibility annotations for screen-reader behavior.",
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Design the Bookify experience before writing any React code.",
+      steps: [
+        "Map the end-to-end user flow for a first-time reader buying and downloading the book.",
+        "Sketch low-fidelity wireframes for landing, checkout success, download, and admin screens.",
+        "Create a medium-fidelity clickable prototype in Figma, Excalidraw, or Balsamiq.",
+        "Define the empty, loading, error, and success states for each screen.",
+        "Run a 5-minute usability test with three people and note where they hesitate.",
+      ],
+      resources: [
+        { label: "Figma", url: "https://www.figma.com/" },
+        { label: "Excalidraw", url: "https://excalidraw.com/" },
+        { label: "WCAG Quick Reference", url: "https://www.w3.org/WAI/WCAG21/quickref/" },
+        { label: "Tailwind UI", url: "https://tailwindui.com/" },
+      ],
+      notes: [
+        {
+          type: "note",
+          title: "Wireframe fidelity",
+          content:
+            "Low fidelity is faster and keeps feedback focused on structure, not color choices. Move to high fidelity only after the flow is validated.",
+        },
+        {
+          type: "edge-case",
+          title: "Error-state copy matters",
+          content:
+            "A generic 'Something went wrong' message kills trust. Design specific messages like 'Payment could not be processed. You were not charged.'",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify UX / UI Design Summary",
+        level: 3,
+      },
+      {
+        type: "heading",
+        content: "Core user flow",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Landing Page → Buy → Stripe Checkout → Success Page → Email → Download Page → File\n\nDecision points:\n- If payment fails, return to landing with a clear message and a retry button.\n- If the download link expired, show an email-resend option for the same order.\n- If the admin opens the dashboard, show the last 50 orders with status badges.",
+      },
+      {
+        type: "heading",
+        content: "Wireframe key screens",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "**Landing page**\n- Hero: book cover, title, subtitle, price, primary 'Buy for $14' button.\n- Secondary content: author bio, table of contents, testimonials.\n- Footer: refund policy and support email.\n\n**Checkout success page**\n- Large checkmark, order summary, and 'Check your email' message.\n- Note that the link expires in 15 minutes.\n\n**Download page**\n- Book title, format selector (PDF / ePub), download button.\n- Visible countdown timer until link expires.\n\n**Admin dashboard**\n- Order table: email, date, amount, status, refund action.\n- Filter by status and export CSV.",
+      },
+      {
+        type: "heading",
+        content: "State coverage",
+        level: 3,
+      },
+      {
+        type: "table",
+        tableHeaders: ["Screen", "Empty", "Loading", "Error", "Success"],
+        tableRows: [
+          ["Landing", "N/A", "Stripe redirect", "Payment failed toast", "Checkout success"],
+          ["Download", "N/A", "Verifying link", "Link expired / used", "File downloading"],
+          ["Admin", "No orders yet", "Fetching data", "Could not load", "Orders listed"],
+        ],
+      },
+      {
+        type: "heading",
+        content: "Accessibility checklist",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- All buttons have visible labels and focus rings.\n- Color is not the only way to show order status (badge text + color).\n- Download timer is announced to screen readers via a live region.\n- Checkout redirect announces 'Redirecting to secure checkout.'",
       },
     ],
   },
@@ -1926,28 +2456,281 @@ volumes:
         abbr: "PM",
         color: "#2563eb",
         responsibility:
-          "Owns research, requirements, and scope decisions.",
+          "Defines the AI feature's value, success metrics, and guardrails. Decides when AI is worth the cost and latency.",
       },
       {
-        role: "Engineering Lead",
-        abbr: "EL",
-        color: "#06b6d4",
+        role: "ML / AI Engineer",
+        abbr: "AI",
+        color: "#8b5cf6",
         responsibility:
-          "Assesses feasibility and estimates effort.",
+          "Designs prompts, chooses models, evaluates output quality, and manages cost and safety.",
       },
       {
-        role: "Founder",
-        abbr: "FO",
-        color: "#f59e0b",
+        role: "Backend Engineer",
+        abbr: "BE",
+        color: "#3b82f6",
         responsibility:
-          "Approves scope and business trade-offs.",
+          "Builds API endpoints, handles secrets, implements caching, fallback, and rate limiting.",
+      },
+      {
+        role: "Frontend Engineer",
+        abbr: "FE",
+        color: "#10b981",
+        responsibility:
+          "Creates the chat or recommendation UI, streams responses, and surfaces errors gracefully.",
       },
     ],
     content: [
       {
         type: "text",
         content:
-          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+          "Adding AI to a product is not about throwing an LLM at every feature. It is about choosing a problem where language understanding genuinely helps the user, integrating it reliably, and controlling cost, latency, and correctness.",
+      },
+      {
+        type: "heading",
+        content: "Pick the right AI feature for Bookify",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Not every product needs a chatbot. For Bookify, useful AI features could be:\n\n- **Q&A assistant:** answer questions about the book's contents for readers who are deciding whether to buy.\n- **Recommendation engine:** suggest related books based on the current title or a short reader preference.\n- **Content summarizer:** generate a one-paragraph teaser or chapter summary.\n- **Review helper:** draft marketing copy for the author based on the book outline.\n\nStart with one feature that has a clear user benefit and a simple fallback if the model fails.",
+      },
+      {
+        type: "heading",
+        content: "Choosing a model and provider",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "The major options are managed APIs (OpenAI, Anthropic, Google), open-weight models run locally or on dedicated hosting (Llama, Mistral), or smaller specialized models for specific tasks.\n\nManaged APIs are fastest to integrate and usually produce the best results, but they charge per token and send data to a third party. Local or self-hosted models give you full control and privacy, but require infrastructure expertise and may be slower or less capable.\n\nFor an MVP, start with a managed API behind a small abstraction so you can swap providers later.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "Read the data policy",
+          content:
+            "If you send real customer data or book content to a managed API, understand how the provider stores and trains on that data. Many providers offer zero-retention or business associate agreements for sensitive use cases.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Prompt engineering for reliability",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "A prompt is just instructions. Good prompts are specific, constrained, and include examples when possible:\n\n- Give the model a clear role ('You are a helpful assistant for readers of this book').\n- State the output format ('Return a JSON object with two fields: answer and confidence').\n- Provide guardrails ('If the answer is not in the context, say you do not know').\n- Include one-shot or few-shot examples for complex tasks.\n\nFor production, version your prompts in code and track their performance. A small wording change can significantly affect output quality and cost.",
+      },
+      {
+        type: "heading",
+        content: "Retrieval-Augmented Generation (RAG)",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "If the AI needs to answer questions based on the book itself, do not paste the whole book into the prompt every time. Use RAG:\n\n1. Split the book into chunks.\n2. Convert each chunk into an embedding vector using an embedding model.\n3. Store the vectors in a vector database.\n4. At query time, find the chunks most similar to the user's question.\n5. Include only those chunks in the prompt as context.\n\nThis keeps token costs low, improves accuracy, and lets you cite sources.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "Latency and streaming",
+          content:
+            "LLM calls can take seconds. Use streaming responses to show words as they arrive, and always show a loading state. Set a maximum response time and return a fallback message if the model is too slow.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Cost, caching, and safety",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "AI costs scale with usage. Protect yourself:\n\n- **Rate limit** the endpoint per user and per IP.\n- **Cache** common questions so you do not pay twice for the same answer.\n- **Cap tokens** on both input and output.\n- **Validate output** before displaying it, especially if you parse JSON.\n- **Log** prompts, responses, and user feedback so you can improve.\n- **Add a feedback loop:** thumbs up/down helps you identify bad answers.",
+      },
+      {
+        type: "heading",
+        content: "Evaluation",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Set up a small evaluation set before launch: 20–50 representative questions with ideal answers. Run the model against them after every prompt change. Track metrics like correctness, hallucination rate, and response length. Without evaluation, you are flying blind.",
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Add an AI-powered recommendation assistant to Bookify.",
+      steps: [
+        "Choose one AI feature for Bookify and write a one-sentence user value proposition.",
+        "Sign up for a managed LLM provider and store the API key in your environment variables.",
+        "Create a backend endpoint that accepts a reader question and returns a streaming or JSON response.",
+        "Design a system prompt that constrains the model to answer based on the book's table of contents.",
+        "Build a small React component that lets a user ask a question and shows the answer with loading and error states.",
+        "Add a rate limit and a fallback message for when the model fails or is too slow.",
+      ],
+      resources: [
+        { label: "OpenAI API Docs", url: "https://platform.openai.com/docs/introduction" },
+        { label: "Anthropic API Docs", url: "https://docs.anthropic.com/" },
+        { label: "Vercel AI SDK", url: "https://sdk.vercel.ai/docs" },
+        { label: "LangChain", url: "https://python.langchain.com/" },
+      ],
+      notes: [
+        {
+          type: "note",
+          title: "Start with non-streaming",
+          content:
+            "Streaming improves perceived speed but adds UI complexity. Build the JSON endpoint first, then add streaming if latency is a problem.",
+        },
+        {
+          type: "edge-case",
+          title: "Hallucinations",
+          content:
+            "Models make things up. For Bookify, explicitly instruct the model to only answer from the provided context and to say 'I don't know' otherwise.",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify AI: Reader Q&A Assistant",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Bookify adds an 'Ask about this book' widget on the landing page. A reader can type a question like 'What chapter covers pricing strategy?' and get a short answer based on the book's table of contents and sample content.",
+      },
+      {
+        type: "heading",
+        content: "Backend endpoint",
+        level: 3,
+      },
+      {
+        type: "code",
+        code: {
+          language: "typescript",
+          filename: "apps/api/src/routes/ask.ts",
+          code: `import { OpenAI } from "openai";
+import { Router } from "express";
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const router = Router();
+
+const SYSTEM_PROMPT = \`You are a helpful assistant for readers of the book.
+Answer only from the provided context.
+If the answer is not in the context, say "I don't have that information."
+Keep answers under 100 words.\`;
+
+router.post("/ask", async (req, res) => {
+  const { question } = req.body;
+  const context = await getRelevantChunks(question); // RAG retrieval
+
+  const completion = await openai.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [
+      { role: "system", content: SYSTEM_PROMPT },
+      { role: "user", content: \`Context: \${context}\n\nQuestion: \${question}\` },
+    ],
+    max_tokens: 150,
+  });
+
+  res.json({ answer: completion.choices[0].message.content });
+});
+
+export default router;`,
+        },
+      },
+      {
+        type: "heading",
+        content: "Frontend component",
+        level: 3,
+      },
+      {
+        type: "code",
+        code: {
+          language: "tsx",
+          filename: "src/components/BookAssistant.tsx",
+          code: `"use client";
+
+import { useState } from "react";
+
+export default function BookAssistant() {
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/ask", {
+        method: "POST",
+        body: JSON.stringify({ question }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!res.ok) throw new Error("Assistant unavailable");
+      const data = await res.json();
+      setAnswer(data.answer);
+    } catch (err) {
+      setError("Could not get an answer. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="rounded-2xl border border-border bg-surface p-5">
+      <h3 className="font-semibold text-foreground">Ask about this book</h3>
+      <form onSubmit={handleSubmit} className="mt-3 flex gap-2">
+        <input
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder="e.g. What chapter covers pricing?"
+          className="flex-1 rounded-lg border border-border px-3 py-2 text-sm"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white"
+        >
+          {loading ? "Thinking..." : "Ask"}
+        </button>
+      </form>
+      {answer && <p className="mt-3 text-sm text-muted">{answer}</p>}
+      {error && <p className="mt-3 text-sm text-red-500">{error}</p>}
+    </div>
+  );
+}`,
+        },
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Cache common questions",
+          content:
+            "Store the question hash and answer in Redis for 24 hours. Most readers ask the same few questions, so caching cuts cost and latency dramatically.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Cost estimate",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "At 500 questions per month with an average of 500 input tokens and 100 output tokens, a small model like gpt-4o-mini costs roughly $2–$5 per month. Always set up usage alerts and a daily cap.",
       },
     ],
   },
@@ -2946,32 +3729,201 @@ describe("payment_intent.succeeded", () => {
       "Handle the legal and compliance obligations of selling digital products online.",
     stakeholders: [
       {
-        role: "Product Manager",
-        abbr: "PM",
-        color: "#2563eb",
+        role: "Legal / Compliance",
+        abbr: "LC",
+        color: "#f43f5e",
         responsibility:
-          "Owns research, requirements, and scope decisions.",
-      },
-      {
-        role: "Engineering Lead",
-        abbr: "EL",
-        color: "#06b6d4",
-        responsibility:
-          "Assesses feasibility and estimates effort.",
+          "Advises on terms, privacy, taxes, copyright, and regulatory obligations. Escalates when real liability exists.",
       },
       {
         role: "Founder",
         abbr: "FO",
         color: "#f59e0b",
         responsibility:
-          "Approves scope and business trade-offs.",
+          "Owns business risk, signs contracts, and decides which legal protections to pay for.",
+      },
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Translates legal requirements into product behavior: consent flows, data retention, refund UI.",
+      },
+      {
+        role: "Engineering Lead",
+        abbr: "EL",
+        color: "#06b6d4",
+        responsibility:
+          "Implements data handling, retention, access controls, and audit logs to match policy.",
       },
     ],
     content: [
       {
         type: "text",
         content:
-          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+          "Compliance and legal work are not blockers to launching, but they are not optional either. The goal is to handle the minimum viable legal obligations correctly, document your assumptions, and know when to bring in a real lawyer.",
+      },
+      {
+        type: "heading",
+        content: "Terms of Service and Privacy Policy",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Almost every product needs both. The Terms of Service govern the relationship between you and your users: who can use the service, what they can and cannot do, how refunds work, and how disputes are resolved. The Privacy Policy explains what data you collect, why you collect it, how long you keep it, and who you share it with.\n\nFor an MVP, use a reputable template or generator, then customize it for your actual data flows. Do not copy another company's policy verbatim; their data practices may not match yours.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "This is not legal advice",
+          content:
+            "Templates are a starting point. If you handle health data, children, high-value transactions, or operate in regulated jurisdictions, consult a qualified attorney.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Data protection and privacy laws",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "GDPR in Europe, UK GDPR in the United Kingdom, PIPEDA in Canada, and state laws like CCPA/CPRA in California all affect how you handle personal data. Common obligations include:\n\n- Collecting only what you need.\n- Getting clear consent where required.\n- Allowing users to access, correct, or delete their data.\n- Keeping records of processing activities.\n- Notifying users and regulators of certain breaches.\n\nFor Bookify, the main personal data is the buyer's email, IP address, and payment information handled by Stripe.",
+      },
+      {
+        type: "heading",
+        content: "Taxes on digital products",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Selling digital products creates tax obligations. In many jurisdictions you must collect and remit sales tax or VAT based on the buyer's location. Stripe Tax, TaxJar, and Paddle can automate much of this, but they cost money. In an MVP, you may manually handle taxes for your home jurisdiction and add automation once revenue justifies it.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "EU VAT threshold",
+          content:
+            "EU VAT rules changed in 2021. There is no minimum threshold for cross-border digital sales to EU consumers. Even one sale may trigger an obligation. Services like Stripe Tax or the EU VAT OSS scheme can help.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Refunds, chargebacks, and disputes",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Your refund policy should be clear, fair, and enforceable. For digital products, common approaches are:\n\n- No refunds after download.\n- 14-day refund window if the file has not been downloaded.\n- Refund at the author's discretion.\n\nYou also need a process for chargebacks. Good records — order confirmations, IP addresses, email delivery logs, and download logs — help you dispute fraudulent chargebacks.",
+      },
+      {
+        type: "heading",
+        content: "Copyright and intellectual property",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Make sure you have the right to sell the ebook. If you are the author, you generally own the copyright. If you use third-party images, fonts, or code, check their licenses. Display a copyright notice and consider whether you want DRM or a clear license for buyers.",
+      },
+      {
+        type: "heading",
+        content: "Accessibility and consumer protection",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Some jurisdictions require digital products and services to meet accessibility standards. Even where not required, accessible design reduces risk and expands your audience. Consumer protection laws also prohibit misleading pricing, hidden fees, and unfair terms. Be clear about the total price before checkout.",
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Put the legal basics in place for Bookify before launch.",
+      steps: [
+        "List every piece of personal data Bookify collects and where it is stored.",
+        "Draft a Privacy Policy and Terms of Service using a reputable generator, customized for your actual data flows.",
+        "Add links to both documents in the site footer and checkout flow.",
+        "Document your refund policy and add it to the Terms of Service.",
+        "Research sales tax or VAT obligations for your home country and top two target markets.",
+        "Set a data-retention period for inactive customer records and add a deletion workflow.",
+      ],
+      resources: [
+        { label: "GDPR.eu", url: "https://gdpr.eu/" },
+        { label: "Stripe Tax", url: "https://stripe.com/tax" },
+        { label: "iubenda", url: "https://www.iubenda.com/" },
+        { label: "TermsFeed", url: "https://termsfeed.com/" },
+      ],
+      notes: [
+        {
+          type: "note",
+          title: "Cookie consent",
+          content:
+            "If you use analytics or advertising cookies, display a cookie banner that lets users opt in. Functional cookies, like login sessions, usually do not require consent.",
+        },
+        {
+          type: "warning",
+          title: "Do not ignore chargebacks",
+          content:
+            "A high chargeback rate can get your Stripe account restricted. Keep evidence for every transaction and respond to disputes promptly.",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify Compliance Checklist",
+        level: 3,
+      },
+      {
+        type: "heading",
+        content: "Data collected",
+        level: 3,
+      },
+      {
+        type: "table",
+        tableHeaders: ["Data", "Why", "Stored by", "Retention"],
+        tableRows: [
+          ["Email address", "Order confirmation and download link", "Bookify DB", "7 years for taxes"],
+          ["Payment details", "Process payment", "Stripe", "Per Stripe policy"],
+          ["IP address", "Fraud/chargeback evidence", "Bookify logs", "90 days"],
+          ["Download token usage", "Support and fraud checks", "Bookify DB", "1 year"],
+        ],
+      },
+      {
+        type: "heading",
+        content: "Refund policy",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Bookify offers full refunds within 14 days of purchase if the file has not been downloaded. After download, refunds are at the author's discretion. Chargebacks are contested using order confirmation, email delivery, and download logs.",
+      },
+      {
+        type: "heading",
+        content: "Tax handling for MVP",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "For the first $5,000 in revenue, Bookify charges a flat price that includes estimated tax for the author's home jurisdiction. Buyers in other regions see the same price; the author sets aside a portion for future tax remittance. Once monthly revenue exceeds $1,000, Stripe Tax is enabled to calculate and collect VAT/sales tax automatically.",
+      },
+      {
+        type: "heading",
+        content: "Privacy policy highlights",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- We collect email only to deliver purchases and send order confirmations.\n- We do not sell or share personal data with third parties except Stripe for payment processing.\n- Users can request a copy or deletion of their data by emailing support.\n- We use a single functional cookie for the purchase flow and analytics cookies only with consent.",
       },
     ],
   },
@@ -3495,32 +4447,195 @@ PORT=3000`,
       "Plan for updates, bug fixes, dependency upgrades, and ongoing feature improvement.",
     stakeholders: [
       {
-        role: "Product Manager",
-        abbr: "PM",
-        color: "#2563eb",
-        responsibility:
-          "Owns research, requirements, and scope decisions.",
-      },
-      {
         role: "Engineering Lead",
         abbr: "EL",
         color: "#06b6d4",
         responsibility:
-          "Assesses feasibility and estimates effort.",
+          "Owns technical maintenance, dependency updates, incident response, and uptime.",
+      },
+      {
+        role: "DevOps / SRE",
+        abbr: "SR",
+        color: "#0ea5e9",
+        responsibility:
+          "Manages backups, monitoring, alerts, and infrastructure patches.",
+      },
+      {
+        role: "Product Manager",
+        abbr: "PM",
+        color: "#2563eb",
+        responsibility:
+          "Prioritizes fixes and iterations based on user feedback and business goals.",
       },
       {
         role: "Founder",
         abbr: "FO",
         color: "#f59e0b",
         responsibility:
-          "Approves scope and business trade-offs.",
+          "Decides investment in maintenance versus new features.",
       },
     ],
     content: [
       {
         type: "text",
         content:
-          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+          "Launch is not the finish line. A real product needs care after release: security patches, dependency updates, bug fixes, performance tuning, and steady improvements based on what you learn. Ignoring maintenance turns a working product into a fragile one.",
+      },
+      {
+        type: "heading",
+        content: "Four kinds of maintenance",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Maintenance usually falls into four buckets:\n\n- **Corrective:** fixing bugs and broken flows reported by users or monitoring.\n- **Adaptive:** updating the system when external dependencies change, such as a new Stripe API version or a database driver update.\n- **Perfective:** improving performance, usability, or features based on feedback and data.\n- **Preventive:** patching vulnerabilities, cleaning up logs, and refactoring before small issues become outages.",
+      },
+      {
+        type: "heading",
+        content: "Dependency and security updates",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Dependencies age quickly. Set up automated pull requests for minor updates using Dependabot or Renovate. Schedule a recurring review — for example, the first Monday of each month — to merge safe updates and investigate breaking changes. Treat security patches as urgent; do not let them sit for weeks.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "warning",
+          title: "Breaking changes hide in minor updates",
+          content:
+            "Semver is a promise, not a guarantee. Always run tests before merging dependency updates, even patch versions. Have a rollback plan.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Backups and disaster recovery",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Your database should be backed up automatically. Know the answers to these questions before you need them:\n\n- How often do backups run?\n- Where are they stored?\n- How long does it take to restore?\n- When did you last verify a restore actually works?\n\nTest your restore process at least once. A backup you cannot restore is not a backup.",
+      },
+      {
+        type: "heading",
+        content: "Incident response basics",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Have a simple runbook ready before your first outage:\n\n1. **Detect:** alert fires or user reports a problem.\n2. **Assess:** what is broken, who is affected, and how severe is it?\n3. **Mitigate:** rollback, scale up, or disable the broken feature.\n4. **Communicate:** tell users if the issue affects them.\n5. **Resolve:** fix the root cause.\n6. **Learn:** run a blameless post-mortem and update the runbook.",
+      },
+      {
+        type: "heading",
+        content: "Iterating after launch",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "New features should compete for limited engineering time. Use a lightweight process: collect feedback and data, write a short proposal with expected impact, estimate effort, and stack-rank against bug fixes and maintenance. Avoid 'quick wins' that add technical debt without moving a metric.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Plan for sunsetting",
+          content:
+            "Features that are not used become liabilities. Track usage and be willing to remove or replace them. Deprecation is maintenance too.",
+        },
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Set up a maintenance plan for Bookify so it stays healthy after launch.",
+      steps: [
+        "Enable Dependabot or Renovate on the repository to receive automated dependency update PRs.",
+        "Document the backup schedule, location, and restore procedure for your database.",
+        "Write a one-page incident response runbook with detection, mitigation, and communication steps.",
+        "Schedule a recurring maintenance window in your calendar for security patches and log reviews.",
+        "Create a 'shutdown criteria' list: which metrics or alerts would trigger an immediate rollback or feature disable.",
+      ],
+      resources: [
+        { label: "Dependabot Docs", url: "https://docs.github.com/en/code-security/dependabot" },
+        { label: "Renovate", url: "https://docs.renovatebot.com/" },
+        { label: "Google SRE Book — Incident Management", url: "https://sre.google/sre-book/managing-incidents/" },
+        { label: "Backups by Veeam (overview)", url: "https://www.veeam.com/it-glossary/backup.html" },
+      ],
+      notes: [
+        {
+          type: "note",
+          title: "Automated minor updates",
+          content:
+            "Many teams auto-merge patch updates after CI passes but require human review for minor and major versions. Start conservative.",
+        },
+        {
+          type: "edge-case",
+          title: "The restore test",
+          content:
+            "Set a calendar reminder to restore from backup into a staging environment quarterly. The first time you try should not be during an outage.",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify Maintenance Plan",
+        level: 3,
+      },
+      {
+        type: "heading",
+        content: "Weekly cadence",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- Review error logs and checkout success rate.\n- Check Stripe webhook health and retry queues.\n- Respond to user support emails and refund requests.\n- Review AI assistant feedback and update the prompt if quality drops.",
+      },
+      {
+        type: "heading",
+        content: "Monthly cadence",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- Merge Dependabot patch updates after tests pass.\n- Review minor and major dependency PRs for breaking changes.\n- Verify database backups by restoring to staging.\n- Reconcile revenue with Stripe payouts.",
+      },
+      {
+        type: "heading",
+        content: "Incident response runbook",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "1. **Payment failure spike:** check Stripe status page, recent deployments, and webhook logs. If a deploy caused it, rollback.\n2. **Download links not sending:** check email provider queue, API logs, and order creation rate.\n3. **Site down:** verify hosting status, DNS, and database connection. Scale or restart the service.\n4. **Security issue:** rotate exposed secrets, patch dependency, scan logs for abuse.",
+      },
+      {
+        type: "heading",
+        content: "Backup and restore",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Database backups run daily with 30-day retention. A restore test is performed on the first Monday of each month into a staging database. The ebook files are stored in object storage with versioning enabled; a bucket policy prevents public access.",
+      },
+      {
+        type: "heading",
+        content: "Shutdown criteria",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "- Checkout success rate below 95% for more than 10 minutes.\n- Error rate above 5% for more than 5 minutes.\n- Any suspected data breach or unauthorized admin access.\n- Critical dependency outage with no ETA.",
       },
     ],
   },
@@ -3538,28 +4653,230 @@ PORT=3000`,
         abbr: "PM",
         color: "#2563eb",
         responsibility:
-          "Owns research, requirements, and scope decisions.",
+          "Defines success metrics, analyzes funnels, and turns data into prioritized product decisions.",
+      },
+      {
+        role: "Data Analyst",
+        abbr: "DA",
+        color: "#8b5cf6",
+        responsibility:
+          "Builds dashboards, validates metrics, and surfaces patterns in user behavior.",
       },
       {
         role: "Engineering Lead",
         abbr: "EL",
         color: "#06b6d4",
         responsibility:
-          "Assesses feasibility and estimates effort.",
+          "Implements event tracking, keeps analytics privacy-compliant, and maintains data pipelines.",
       },
       {
         role: "Founder",
         abbr: "FO",
         color: "#f59e0b",
         responsibility:
-          "Approves scope and business trade-offs.",
+          "Decides which metrics matter for the business and funds analytics tooling.",
       },
     ],
     content: [
       {
         type: "text",
         content:
-          "This chapter is a placeholder. It will be expanded with step-by-step guidance and a Bookify example.",
+          "Analytics turns guesses into decisions. Without measurement, you do not know whether a feature helped, hurt, or did nothing. The goal is to track a small number of meaningful metrics, collect user feedback, and use both to decide what to build next.",
+      },
+      {
+        type: "heading",
+        content: "Start with outcomes, not events",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "It is easy to drown in page views and button clicks. Start by defining the outcome you want. For Bookify, the ultimate outcome is revenue from ebook sales. Leading indicators include landing-page conversion, checkout completion, email open rate, and download success.\n\nA useful framework is the pirate metrics funnel: **A**cquisition, **A**ctivation, **R**etention, **R**eferral, **R**evenue. For a one-time purchase product, revenue and activation matter most.",
+      },
+      {
+        type: "heading",
+        content: "Funnel analysis for Bookify",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "A funnel shows where users drop off. For Bookify, the core funnel is:\n\n1. Visitor lands on the site.\n2. Visitor clicks Buy.\n3. Visitor completes Stripe Checkout.\n4. Payment webhook succeeds.\n5. Email is delivered.\n6. Reader clicks download link and gets the file.\n\nIf 100 people click Buy but only 40 complete checkout, your checkout flow is the problem. Fix that before you try to drive more traffic.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "tip",
+          title: "Instrument the full funnel",
+          content:
+            "Do not only track frontend events. Track backend events too: webhook receipt, order creation, email send, and download success. The frontend cannot tell you when an email failed to send.",
+        },
+      },
+      {
+        type: "heading",
+        content: "Privacy-friendly analytics",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "You do not have to choose between tracking and privacy. Options include:\n\n- **Plausible or Fathom:** simple, cookie-free, privacy-first analytics.\n- **PostHog:** product analytics with self-hosting and consent controls.\n- **Segment + warehouse:** powerful but heavier; route events to your own database.\n- **DIY event log:** store key events in your own database. More work, but full ownership.\n\nMatch your tooling to your audience. If your readers are privacy-conscious, heavy third-party tracking will hurt trust.",
+      },
+      {
+        type: "heading",
+        content: "Collecting qualitative feedback",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Numbers tell you what is happening. Interviews and surveys tell you why. Low-friction ways to collect feedback:\n\n- A one-question post-purchase survey: 'What almost stopped you from buying?'\n- A feedback widget on the download page.\n- Email replies to your support address.\n- Recording common support questions and categorizing them.\n\nReview qualitative feedback weekly. Look for patterns, not isolated complaints.",
+      },
+      {
+        type: "heading",
+        content: "Avoiding vanity metrics",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Vanity metrics feel good but do not drive decisions. Total page views, number of sign-ups, and raw downloads can all grow while revenue stalls. Prefer:\n\n- Conversion rate, not total visitors.\n- Revenue per visitor, not total revenue.\n- Checkout success rate, not total checkouts.\n- Support tickets per order, not total tickets.\n\nIf a metric cannot lead to a specific action, it is probably vanity.",
+      },
+      {
+        type: "heading",
+        content: "Making decisions from data",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "Data informs decisions; it does not make them for you. Use this loop:\n\n1. Form a hypothesis: 'Changing the button text from Buy to Get instant access will increase checkout conversion.'\n2. Decide how to measure: event tracking and a comparison window.\n3. Make the change or run an A/B test.\n4. Wait until you have enough data to be confident.\n5. Keep, revert, or iterate based on the result.\n\nSmall, frequent experiments beat giant roadmap bets.",
+      },
+      {
+        type: "callout",
+        callout: {
+          type: "edge-case",
+          title: "Statistical significance",
+          content:
+            "Do not declare a winner after 20 visitors. Use a sample-size calculator or wait until you have at least a few hundred conversions per variant. Low-traffic products need longer test periods.",
+        },
+      },
+    ],
+    tryItYourself: {
+      intro:
+        "Set up analytics and feedback loops for Bookify.",
+      steps: [
+        "Define three KPIs for Bookify and the events needed to calculate each one.",
+        "Choose an analytics tool and add privacy-compliant tracking to the landing and checkout pages.",
+        "Create a funnel dashboard showing visitor → Buy click → checkout completion → email delivery.",
+        "Add a one-question feedback survey after a successful purchase.",
+        "Run one experiment: change a headline or button, measure conversion for one week, and decide whether to keep it.",
+      ],
+      resources: [
+        { label: "Plausible Analytics", url: "https://plausible.io/" },
+        { label: "PostHog Docs", url: "https://posthog.com/docs" },
+        { label: "Amplitude", url: "https://amplitude.com/" },
+        { label: "A/B Test Significance Calculator", url: "https://www.evanmiller.org/ab-testing/" },
+      ],
+      notes: [
+        {
+          type: "note",
+          title: "Start simple",
+          content:
+            "A privacy-friendly page-view tracker plus your own order database can answer most early-stage questions. Add event analytics only when the basics are not enough.",
+        },
+        {
+          type: "warning",
+          title: "Track revenue, not just events",
+          content:
+            "It is easy to optimize for button clicks and forget the actual purchase. Always tie experiments back to revenue or a reliable proxy.",
+        },
+      ],
+    },
+    bookifyExample: [
+      {
+        type: "heading",
+        content: "Bookify Analytics & Feedback Setup",
+        level: 3,
+      },
+      {
+        type: "heading",
+        content: "Key metrics",
+        level: 3,
+      },
+      {
+        type: "table",
+        tableHeaders: ["Metric", "Why it matters", "How to track"],
+        tableRows: [
+          ["Landing-to-checkout rate", "Shows if the pitch resonates", "Frontend event: click Buy"],
+          ["Checkout completion rate", "Measures Stripe Checkout friction", "Stripe checkout session completed / started"],
+          ["Webhook success rate", "Catches backend integration issues", "Backend log: webhook processed"],
+          ["Email delivery rate", "Confirms delivery pipeline health", "Email provider webhook"],
+          ["Download success rate", "Final step of the user journey", "Download endpoint success log"],
+        ],
+      },
+      {
+        type: "heading",
+        content: "Event schema example",
+        level: 3,
+      },
+      {
+        type: "code",
+        code: {
+          language: "typescript",
+          filename: "trackEvent.ts",
+          code: `export function trackEvent(name: string, properties: Record<string, unknown>) {
+  // Plausible example
+  if (window.plausible) {
+    window.plausible(name, { props: properties });
+  }
+
+  // Also log to your own database for funnel analysis
+  fetch("/api/events", {
+    method: "POST",
+    body: JSON.stringify({ name, properties, timestamp: new Date().toISOString() }),
+    headers: { "Content-Type": "application/json" },
+  }).catch(() => {
+    // silently fail; never block the purchase flow for analytics
+  });
+}`,
+        },
+      },
+      {
+        type: "heading",
+        content: "Simple funnel query",
+        level: 3,
+      },
+      {
+        type: "code",
+        code: {
+          language: "sql",
+          filename: "funnel.sql",
+          code: `-- Daily conversion from checkout started to paid
+SELECT
+  DATE(created_at) AS day,
+  COUNT(*) FILTER (WHERE status = 'started') AS started,
+  COUNT(*) FILTER (WHERE status = 'paid') AS paid,
+  ROUND(
+    100.0 * COUNT(*) FILTER (WHERE status = 'paid') /
+    NULLIF(COUNT(*) FILTER (WHERE status = 'started'), 0),
+    2
+  ) AS conversion_pct
+FROM orders
+GROUP BY DATE(created_at)
+ORDER BY day DESC
+LIMIT 30;`,
+        },
+      },
+      {
+        type: "heading",
+        content: "Post-purchase feedback",
+        level: 3,
+      },
+      {
+        type: "text",
+        content:
+          "After a successful download, Bookify shows a single question: 'What almost stopped you from buying today?' with a text box. Responses are stored in the database and reviewed weekly. The product team categorizes them into pricing, trust, content, and UX themes.",
       },
     ],
   },
