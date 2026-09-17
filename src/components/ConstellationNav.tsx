@@ -112,7 +112,7 @@ export default function ConstellationNav({ currentSlug }: Props) {
             className="relative flex w-full items-center justify-between"
           >
             <AnimatePresence mode="popLayout" initial={false}>
-              {navItems.map((item, i) => (
+              {navItems.map((item) => (
                 <motion.li
                   key={
                     item.type === "phase"
